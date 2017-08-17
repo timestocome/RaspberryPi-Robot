@@ -4,7 +4,7 @@ Machine Learning on a Raspberry Pi
 
 -----     Setup     -----
 
-RaspberryPi Software Guide basic OS directions and images 
+RaspberryPi Software Guide (basic OS directions and images) 
 
 - https://www.raspberrypi.org/learning/software-guide/quickstart/
 
@@ -20,7 +20,7 @@ Download Raspbian
 - https://www.raspberrypi.org/downloads/
 
 
-Download Etcher io
+Download Etcher.io
 
 - https://etcher.io/
 
@@ -39,14 +39,14 @@ Use the SD Formatter to do a full format
 Use Etcher.io to flash the OS onto the card ( be sure to unzip Raspbian first )
 
 
-Install mini anaconda
+Install Mini Anaconda
 
 - https://www.continuum.io/blog/developer/anaconda-raspberry-pi
 
 - https://stackoverflow.com/questions/39371772/how-to-install-anaconda-on-raspberry-pi-3-model-b
 
 
-Install tensorflow
+Install TensorFlow
 
 - First check to be sure you are using the Python V3.4 installed with Mini Anaconda
 
