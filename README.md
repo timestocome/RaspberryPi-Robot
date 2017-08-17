@@ -48,7 +48,7 @@ Install mini anaconda
 
 Install tensorflow
 
-- check to be sure you are using python V3.4 installed with Mini Anaconda
+- First check to be sure you are using the Python V3.4 installed with Mini Anaconda
 
 - https://github.com/samjabrahams/tensorflow-on-raspberry-pi
 
