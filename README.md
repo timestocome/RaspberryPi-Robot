@@ -60,6 +60,12 @@ Enable the camera
 - Select 'Finish' to save changes and reboot
 
 
+Python library and basics for accessing the camera
+- https://www.raspberrypi.org/documentation/usage/camera/python/README.md
+
+
+
+
 
 
 
