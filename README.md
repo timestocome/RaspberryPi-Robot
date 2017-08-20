@@ -53,4 +53,14 @@ Install TensorFlow
 - https://github.com/samjabrahams/tensorflow-on-raspberry-pi
 
 
+Enable the camera
+- Type raspi-config at a command prompt in the terminal
+- Select 5. Interfacing options
+- Select P1 Enable/Disable Camera
+- Select 'Finish' to save changes and reboot
+
+
+
+
+
 
