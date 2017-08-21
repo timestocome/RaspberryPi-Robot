@@ -64,6 +64,10 @@ Python library and basics for accessing the camera
 - https://www.raspberrypi.org/documentation/usage/camera/python/README.md
 
 
+Setup the wifi on the RaspberryPi
+- https://howtoraspberrypi.com/connect-wifi-raspberry-pi-3-others/
+
+
 
 
 
