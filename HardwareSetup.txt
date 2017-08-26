@@ -22,6 +22,8 @@ http://deepaksinghviblog.blogspot.com/2014/08/raspberrypi-to-run-dc-motor-using-
 ------- Misc -------
 
 Turn on i2c interface so you can connect and run accessories off your RaspberryPi
+https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c
+
 > sudo raspi-config
 -> i2c
 -> enable
