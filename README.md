@@ -11,7 +11,9 @@ Project goal is to set up a robot car with a camera to interact with household m
 
 SoftwareSetup.txt has links to any software I use along with any instructions needed to set it up
 
-HardwareSetup.txt will have links and detailed directions once I have all the hardware setup
+HardwareSetup.txt will have links and detailed directions as I get things running
 
 PartsList.txt has parts listed as I acquire and add them
+
+test*.py are simple scripts to make sure hardware is on and connecting to the RaspberryPi
 
