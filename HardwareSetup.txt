@@ -2,6 +2,13 @@
 
 * just a few random notes, I don't have everything working yet
 
+
+Turn on i2c interface so you can connect and run accessories off your RaspberryPi
+> sudo raspi-config
+-> i2c
+-> enable
+
+
 Check i2c connections and locations 
 > sudo i2cdetect -y 1
 
