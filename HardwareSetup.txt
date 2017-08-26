@@ -1,0 +1,8 @@
+
+
+* just a few random notes, I don't have everything working yet
+
+Check i2c connections and locations 
+> sudo i2cdetect -y 1
+
+
