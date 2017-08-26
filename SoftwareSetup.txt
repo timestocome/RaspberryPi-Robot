@@ -76,5 +76,9 @@ Set up a wireless VNC so you can access your RaspberriPi from your desktop compu
 Set the VNC to run at boot every time you start your RaspberryPi
 - https://www.raspberrypi.org/documentation/remote-access/vnc/
 
+Set Keyboard to US
+> sudo vi /ect/default/keyboard
+- change 'gb' to 'us' and save
+
 
 
