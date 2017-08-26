@@ -58,6 +58,8 @@ Setup the wifi on the RaspberryPi
 
 
 Set a fixed wireless ip on the RaspberryPi
+https://www.modmypi.com/blog/how-to-give-your-raspberry-pi-a-static-ip-address-update
+
 - edit /etc/dhcpcd.conf 
 - add this to the bottom of the file, save it and reboot
 * use your router ip and ip address, you can find these by typing ifconfig at a command prompt
