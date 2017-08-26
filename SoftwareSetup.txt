@@ -7,15 +7,11 @@ Machine Learning on a Raspberry Pi
 RaspberryPi Software Guide (basic OS directions and images) 
 - https://www.raspberrypi.org/learning/software-guide/quickstart/
 
-
-
 Download SD Formatter
 - https://www.sdcard.org/
 
-
 Download Raspbian
 - https://www.raspberrypi.org/downloads/
-
 
 Download Etcher.io
 - https://etcher.io/
@@ -23,14 +19,11 @@ Download Etcher.io
 
 Insert SD card into your computer (16GB+)
 - If your computer won't read it ( My Surface and iMac wouldn't see it)
-
 --- Stick the card in a camera and format it
-
 --- Then plug camera into computer and format with SD Formatter
 
 
 Use the SD Formatter to do a full format
-
 Use Etcher.io to flash the OS onto the card ( be sure to unzip Raspbian first )
 
 
@@ -63,14 +56,14 @@ Set a fixed wireless ip on the RaspberryPi
 - edit /etc/dhcpcd.conf 
 - add this to the bottom of the file, save it and reboot
 * use your router ip and ip address, you can find these by typing ifconfig at a command prompt
------------------------------------------------------------------------
-
+#####
 interface wlan0
 
 static ip_address=192.168.0.200
 static routers=192.168.0.1
 static domain_name_servers=192.168.0.1
------------------------------------------------------------------------
+####
+
 
 Set up a wireless VNC so you can access your RaspberriPi from your desktop computer
 - https://www.realvnc.com/en/connect/docs/raspberry-pi.html#raspberry-pi-setup
