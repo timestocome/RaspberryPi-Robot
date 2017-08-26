@@ -3,6 +3,24 @@
 * just a few random notes, I don't have everything working yet
 
 
+------- Wheels -------
+- Raspberry Pi
+- L298N Motor Controller
+- DC Wheel motors
+- Batteries
+- Wires
+
+
+http://deepaksinghviblog.blogspot.com/2014/08/raspberrypi-to-run-dc-motor-using-l298n.html
+
+
+
+
+
+
+
+------- Misc -------
+
 Turn on i2c interface so you can connect and run accessories off your RaspberryPi
 > sudo raspi-config
 -> i2c
