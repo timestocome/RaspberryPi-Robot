@@ -1,0 +1,17 @@
+
+
+Robot 1
+- Smart Video Car Kit from SunFounderDirecthttps://www.amazon.com/gp/product/B014KK89BW/ (I couldn't get this kit to work so I just used it for parts)
+- RaspberryPi 3 https://www.amazon.com/Raspberry-Model-1-2GHz-64-bit-quad-core/dp/B01CD5VC92/
+- SainSmart L298N Dual H Bridge Stepper Motor https://www.amazon.com/gp/product/B00AJGM37I/
+- Batteries
+
+
+
+
+Robot 2
+- Actobatics Whippersnapper Rover http://www.frys.com/product/8458148?site=sr:SEARCH:MAIN_RSLT_PG 
+- RaspberryPi 3 https://www.amazon.com/Raspberry-Model-1-2GHz-64-bit-quad-core/dp/B01CD5VC92/
+- SainSmart L298N Dual H Bridge Stepper Motor https://www.amazon.com/gp/product/B00AJGM37I/
+- Battery case and batteries
+- RaspberryPi Camera Module V2 - 8 MP https://www.amazon.com/Raspberry-Pi-Camera-Module-Megapixel/dp/B01ER2SKFS/
