@@ -88,3 +88,13 @@ Set Keyboard to US
 -----     Backup and Restore SD Card   -----
 
 https://thepihut.com/blogs/raspberry-pi-tutorials/17789160-backing-up-and-restoring-your-raspberry-pis-sd-card
+
+
+
+
+
+
+
+
+
+
