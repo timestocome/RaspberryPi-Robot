@@ -72,6 +72,8 @@ static domain_name_servers=192.168.0.1
 
 Set up a wireless VNC so you can access your RaspberriPi from your desktop computer
 - https://www.realvnc.com/en/connect/docs/raspberry-pi.html#raspberry-pi-setup
+user: pi
+passwd: raspberry
 
 Set the VNC to run at boot every time you start your RaspberryPi
 > sudo systemctl enable vncserver-x11-serviced.service
