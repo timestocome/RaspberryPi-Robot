@@ -29,11 +29,19 @@ Source:
 https://www.raspberrypi.org/documentation/usage/webcams/
 
 
+------- RaspberryPi camera -------
+Turn on the camera in Raspberry Pi Configuration ( under preferences )
+
+Python script to test camera video and image capture:
+https://github.com/timestocome/RaspberryPi/blob/master/TestPiCamera.py
+
+
+Source:
+https://www.raspberrypi.org/learning/getting-started-with-picamera/requirements/
 
 
 
-
-------- Misc -------
+------- Handy things to know for debugging -------
 
 Turn on i2c interface so you can connect and run accessories off your RaspberryPi
 https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c
