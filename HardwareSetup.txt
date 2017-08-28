@@ -10,9 +10,23 @@
 - Batteries
 - Wires
 
+Python script to test wheels:
+https://github.com/timestocome/RaspberryPi/blob/master/testWheels.py
 
+
+Source:
 http://deepaksinghviblog.blogspot.com/2014/08/raspberrypi-to-run-dc-motor-using-l298n.html
 
+
+------- USB Webcam -------
+> sudo apt-get install fswebcam 
+
+Bash script to test camera grab image
+https://github.com/timestocome/RaspberryPi/blob/master/TestUSBCamera.sh
+
+
+Source:
+https://www.raspberrypi.org/documentation/usage/webcams/
 
 
 
