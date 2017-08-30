@@ -2,6 +2,7 @@
 
 
 # https://www.raspberrypi.org/learning/getting-started-with-picamera/worksheet/
+# https://picamera.readthedocs.io/en/release-1.13/index.html
 
 from picamera import PiCamera
 from time import sleep
