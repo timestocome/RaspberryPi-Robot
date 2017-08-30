@@ -94,7 +94,10 @@ https://thepihut.com/blogs/raspberry-pi-tutorials/17789160-backing-up-and-restor
 
 
 
+------- Transfer Files between Desktop and RaspberryPi -------
 
+VNC lets you move files between your computer and the Pi
+https://www.realvnc.com/en/connect/docs/file-transfer.html
 
 
 
