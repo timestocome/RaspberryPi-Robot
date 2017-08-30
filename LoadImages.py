@@ -1,4 +1,7 @@
-# start grabbing video from camera
+# start grabbing video from camera and saving to disk for use in other code
+
+
+# https://www.raspberrypi.org/learning/getting-started-with-picamera/worksheet/
 
 from picamera import PiCamera
 from time import sleep
