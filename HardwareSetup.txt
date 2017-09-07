@@ -39,6 +39,11 @@ https://github.com/timestocome/RaspberryPi/blob/master/TestPiCamera.py
 Source:
 https://www.raspberrypi.org/learning/getting-started-with-picamera/requirements/
 
+------- Ultra sonic sensor HC204 ---------
+
+
+Test script and notes to check SR204 is working
+https://github.com/timestocome/RaspberryPi/blob/master/test%20hardware%20scripts/TestUltraSonic.py
 
 
 ------- Handy things to know for debugging -------
