@@ -1,6 +1,16 @@
 
 
-* just a few random notes, I don't have everything working yet
+------- Parts list -------
+Actobotics Whippersnapper Rover
+Raspberry Pi 3
+L298N Motor Driver
+HC-SR204 Ultrasonic Sensor
+Raspberry Pi Camera
+Small bread board
+330 Ohm resistor
+470 Ohm resistor
+
+mIsc - wires, small nuts and bolts, small piece of plexiglass to hold camera and sonic sensor
 
 
 ------- Wheels -------
