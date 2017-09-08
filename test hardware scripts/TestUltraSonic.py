@@ -59,7 +59,7 @@ while True:
     #print('duration... ', pulse_duration)
     
     
-    distance = pulse_duration * 34300 / 2.
+    distance = pulse_duration * 34000 / 2.
     distance = round(distance, 2)
     
     if distance < 1000:
