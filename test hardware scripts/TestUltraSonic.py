@@ -64,8 +64,8 @@ while True:
     
     if distance < 1000:
         print('Distance ', distance - distance_sensor_to_car_front)
-    else:
-        print('Out of range')
+    #else:
+    #    print('Out of range')
         
         
 
