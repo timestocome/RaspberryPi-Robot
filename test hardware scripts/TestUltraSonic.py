@@ -34,7 +34,7 @@ pulse_start = 0.
 pulse_end = 0.
 
 # adjust sensor location
-distance_sensor_to_car_front = 4 * 2.54
+distance_sensor_to_car_front = 4 * 2.54   # inches to cm
 
 
 
@@ -59,7 +59,7 @@ while True:
     #print('duration... ', pulse_duration)
     
     
-    distance = pulse_duration * 34000 / 2.
+    distance = pulse_duration * 34000 / 2.      # round trip so cut in half
     distance = round(distance, 2)
     
     if distance < 1000:
