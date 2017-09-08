@@ -17,63 +17,58 @@
 
 
 
-
 import RPi.GPIO as gpio
 import time
+from time import sleep
 
 gpio.setmode(gpio.BOARD)
 
-print('test distance sensor')
+trigger = 13
+echo = 11
 
+gpio.setup(trigger, gpio.OUT)    # trigger
+gpio.setup(echo, gpio.IN)    # echo
 
-
-# set up  and init 
-trigger = 16
-echo = 18
-
-gpio.setup(trigger, gpio.OUT)
-gpio.setup(echo, gpio.IN)
 
 pulse_start = 0.
 pulse_end = 0.
 
-
-speed_of_sound = 343 * 100
-print("speed of sound in cm", speed_of_sound)
-
+# adjust sensor location
+distance_sensor_to_car_front = 4 * 2.54
 
 
-# run forever
 
 while True:
     
-    # clear trigger
+    #print('init sensor....')
     gpio.output(trigger, False)
-    time.sleep(2)
-        
-    # send pulse to trigger
+    time.sleep(0.5)
+    
+    #print('trigger...')
     gpio.output(trigger, True)
     time.sleep(0.00001)
     gpio.output(trigger, False)
     
-    # check echo for return signal
     while gpio.input(echo) == 0:
         pulse_start = time.time()
-    
+        
     while gpio.input(echo) == 1:
         pulse_end = time.time()
         
     pulse_duration = pulse_end - pulse_start
-    distance = speed_of_sound / 2. * pulse_duration
+    #print('duration... ', pulse_duration)
+    
+    
+    distance = pulse_duration * 34300 / 2.
     distance = round(distance, 2)
     
-    # filter out things far away
-    if distance < 300:
-        print("distance (cm) ", distance)
-    
-    
-       
-    
-    
+    if distance < 1000:
+        print('Distance ', distance - distance_sensor_to_car_front)
+    else:
+        print('Out of range')
+        
+        
+
+
 gpio.cleanup()
-    
+
