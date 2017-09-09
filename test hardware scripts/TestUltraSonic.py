@@ -4,7 +4,9 @@
 # hook up and read ultra sonic SR204 sensors to Raspberry Pi
 # needs calibration still 
 # I used 470 Ohm (R2) and 330 Ohm (R1) resisters
-# some one else said   R2/2 <  R1 * 2 < R2  idk, I haven't verified this 
+# Vout / Vin = R2 / (R1 + R2)
+# Vout = 3.3
+# Vin = 5
 
 # photo of test wiring 
 # https://github.com/timestocome/RaspberryPi/blob/master/photos_of_robots/Test%20SR204%20.jpg
@@ -59,7 +61,7 @@ while True:
     #print('duration... ', pulse_duration)
     
     
-    distance = pulse_duration * 34000 / 2.      # round trip so cut in half
+    distance = pulse_duration * 34300 / 2.      # round trip so cut in half
     distance = round(distance, 2)
     
     if distance < 1000:
