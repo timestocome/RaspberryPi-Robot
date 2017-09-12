@@ -173,7 +173,7 @@ class world():
         self.num_states = len(self.states)
         self.num_actions = 6
 
-    
+        print('state', self.state)
 
 
     def move(self, action):
@@ -181,6 +181,11 @@ class world():
         state = get_state()
         reward = 0
         self.states[state] += 1
+        
+        # robot doesn't know it is stuck at wall if wheels
+        # still spinning forward
+        if state < 2 * distance_from_sensor_to_car_front:
+            reward -= 1.5
 
         if action == 0:         
             forward()
@@ -201,6 +206,7 @@ class world():
             hard_right()
             reward = 0
         
+        print("state, action, reward", state, action, reward)
 
         return reward
 
@@ -241,8 +247,9 @@ world = world()
 robot = agent(lr=0.001, s_size = world.num_states, a_size = world.num_actions)
 
 weights = tf.trainable_variables()[0]
-total_episodes = 1000 + 1
+total_episodes = 1000 + 1 # up this to loop forever once everything works
 total_reward = np.zeros([world.num_states, world.num_actions])
+distance = 0. # estimate how far robot has traveled
 e = 1.0     # random action 
 
 init = tf.global_variables_initializer()
@@ -259,7 +266,7 @@ with tf.Session() as sess:
 
     while i < total_episodes:
         s = get_state()
-        e *= 0.99        # reduce random searching
+        e *= 0.999        # reduce random searching over time
 
         if np.random.rand(1) < e:
             action = np.random.randint(world.num_actions)
@@ -273,13 +280,15 @@ with tf.Session() as sess:
         _, ww = sess.run([robot.update, weights], feed_dict = feed_dict)
 
         total_reward[s, action] += reward
+        distance += reward
 
-        if i % 500 == 0:
-            print ("Total distance: " + str(np.mean(total_reward, axis=1)))
+        if i % 1 == 0:
+            print("Random tries: ", e)
+            print("Distance: ", distance)
         
         if i % 100 == 0:
             save_path = saver.save(sess, 'save/model.ckpt')
-        
+            
         i += 1
 
 
