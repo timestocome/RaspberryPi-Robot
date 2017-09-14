@@ -23,6 +23,8 @@ gpio.setmode(gpio.BOARD)        # use pin numbers not gpio numbers
 trigger = 13
 echo = 11
 
+max_distance = 152    # sensor can read 400 cm we only need 5'
+
 gpio.setup(trigger, gpio.OUT)
 gpio.setup(echo, gpio.IN)
 
@@ -50,6 +52,7 @@ pulse_end = 0.
 distance_from_sensor_to_car_front = 4 * 2.54
 
 
+# flush sensor
 gpio.output(trigger, False)
 time.sleep(0.5)
 
@@ -78,8 +81,12 @@ def get_state(sleep_time=0.1):
     
     if distance > 2 and distance < 400:         # sensor range
         distance = distance - distance_from_sensor_to_car_front
-    else: distance = 400   # assume obstacles far away
-    
+
+    # don't worry about things further 4'
+    # this also reduces the size of the state machine
+    if distance > max_distance:    
+        distance = max_distance - distance_from_sensor_to_car_front
+
     return int(distance)
 
 
@@ -89,7 +96,7 @@ def get_state(sleep_time=0.1):
 ##############################################################################
 # perform action
 ##############################################################################
-actions = ['forward', 'reverse', 'turn_left', 'hard_left', 'turn_right', 'hard_right']
+actions = ['forward', 'reverse', 'turn_left', 'turn_right']
 
 
 def forward(t=1.):
@@ -169,12 +176,12 @@ class world():
     def __init__(self):
 
         self.state = get_state()
-        self.states = np.zeros(400 + 1)
+        self.states = np.zeros(max_distance + 1)
         self.num_states = len(self.states)
-        self.num_actions = 6
+        self.num_actions = len(actions)
 
         print('state', self.state)
-
+        print('num actions', self.num_actions)
 
     def move(self, action):
 
@@ -184,29 +191,31 @@ class world():
         
         # robot doesn't know it is stuck at wall if wheels
         # still spinning forward
-        if state < 2 * distance_from_sensor_to_car_front:
-            reward -= 1.5
+        if state <= 2.5 * distance_from_sensor_to_car_front:
+            reward -= 3.0
 
         if action == 0:         
-            forward()
-            reward = 2
+            forward(1)
+            reward = 1
         elif action == 1:       
-            reverse()
+            reverse(1)
             reward = -1
         elif action == 2:       
-            turn_left()
+            turn_left(2)
             reward = 1
         elif action == 3:      
-            hard_left()
-            reward = 0
+            turn_right(2)
+            reward = 1
+            
+        '''
         elif action == 4:       
             turn_right()
             reward = 1
         elif action == 5:       
-            hard_right()
-            reward = 0
-        
-        print("state, action, reward", state, action, reward)
+            turn_left()
+            reward = 1
+        '''
+        print("state %d,  action %d,  reward %d" % (state, action, reward))
 
         return reward
 
@@ -245,14 +254,21 @@ tf.reset_default_graph()
 
 world = world()
 robot = agent(lr=0.001, s_size = world.num_states, a_size = world.num_actions)
-
 weights = tf.trainable_variables()[0]
-total_episodes = 1000 + 1 # up this to loop forever once everything works
-total_reward = np.zeros([world.num_states, world.num_actions])
-distance = 0. # estimate how far robot has traveled
-e = 1.0     # random action 
+e = 0.9     # % time random action chosen, decreases over time 
 
 init = tf.global_variables_initializer()
+
+total_episodes = 1000 + 1 # up this to loop forever once everything works
+total_reward = np.zeros([world.num_states, world.num_actions])
+
+# numpy was resetting? idk heavily favoring 0, this is a hack around it
+random_actions = np.random.random_integers(0, 3, total_episodes)
+
+
+# used for debugging - remove in final version to speed things up
+distance = 0. # estimate how far robot has traveled
+choices = np.zeros(len(actions))
 
 
 with tf.Session() as sess:
@@ -260,16 +276,17 @@ with tf.Session() as sess:
     i = 0
     saver = tf.train.Saver()
     
-    '''
-    saver.restore(sess, 'save/model.ckpt')
-    '''
+
+    #saver.restore(sess, 'save/model.ckpt')
+    
 
     while i < total_episodes:
         s = get_state()
-        e *= 0.999        # reduce random searching over time
+        e *= 0.95        # reduce random searching over time
+        e = max(e, .1)   # keep epislon over 10%
 
         if np.random.rand(1) < e:
-            action = np.random.randint(world.num_actions)
+            action = random_actions[i]
         else:
             action = sess.run(robot.chosen_action, feed_dict={robot.state_in:[s]})
 
@@ -278,14 +295,18 @@ with tf.Session() as sess:
         feed_dict = { robot.reward_holder: [reward], robot.action_holder: [action], robot.state_in: [s]  }
         
         _, ww = sess.run([robot.update, weights], feed_dict = feed_dict)
-
         total_reward[s, action] += reward
+        
+        # used for debugging - comment out in final
         distance += reward
+        choices[action] += 1
 
         if i % 1 == 0:
             print("Random tries: ", e)
             print("Distance: ", distance)
+            print("Choices: ", choices)
         
+        # save weights
         if i % 100 == 0:
             save_path = saver.save(sess, 'save/model.ckpt')
             
