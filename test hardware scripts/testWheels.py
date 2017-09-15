@@ -9,7 +9,7 @@
 
 # more info
 # http://www.mcmanis.com/chuck/robotics/tutorial/h-bridge/
-
+# http://www.bristolwatch.com/L298N/index.htm
 
 
 import RPi.GPIO as gpio
