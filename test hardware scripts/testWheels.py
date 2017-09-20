@@ -18,127 +18,147 @@ from time import sleep
 gpio.setmode(gpio.BOARD)
 
 
+# 35, 36, 37, 38
+
+left_forward = 36
+right_forward = 35
+left_reverse = 38
+right_reverse = 37
 
 
-gpio.setup(38, gpio.OUT)    # go in reverse left wheel
-gpio.setup(40, gpio.OUT)    # go forward left wheel
+gpio.setup(left_forward, gpio.OUT) 
+gpio.setup(right_forward, gpio.OUT)
 
-gpio.setup(35, gpio.OUT)    # go forward right wheel
-gpio.setup(33, gpio.OUT)    # go in reverse right wheel
+gpio.setup(left_reverse, gpio.OUT)   
+gpio.setup(right_reverse, gpio.OUT)   
 
 
 
 
 def go_forward(t):
     
-    gpio.output(40, gpio.HIGH)
-    gpio.output(35, gpio.HIGH)
+    print('forward')
+    
+    gpio.output(right_forward, gpio.HIGH)
+    gpio.output(left_forward, gpio.HIGH)
     
     sleep(t)
-    gpio.output(40, gpio.LOW)
-    gpio.output(35, gpio.LOW)
+    gpio.output(right_forward, gpio.LOW)
+    gpio.output(left_forward, gpio.LOW)
     
 
 def turn_left(t):
-    gpio.output(35, gpio.HIGH)
+    
+    print('left')
+    gpio.output(right_forward, gpio.HIGH)
     
     sleep(t)
-    gpio.output(35, gpio.LOW)
+    gpio.output(right_forward, gpio.LOW)
     
 
 
 def turn_right(t):
-    gpio.output(40, gpio.HIGH)
+    print('right')
+    gpio.output(left_forward, gpio.HIGH)
     
     sleep(t)
-    gpio.output(40, gpio.LOW)
+    gpio.output(left_forward, gpio.LOW)
     
 
 
 def go_backward(t):
     
-    gpio.output(38, gpio.HIGH)
-    gpio.output(33, gpio.HIGH)
+    print('reverse')
+    
+    gpio.output(right_reverse, gpio.HIGH)
+    gpio.output(left_reverse, gpio.HIGH)
     
     sleep(t)
-    gpio.output(38, gpio.LOW)
-    gpio.output(33, gpio.LOW)
+    gpio.output(right_reverse, gpio.LOW)
+    gpio.output(left_reverse, gpio.LOW)
     
     
 
 def reverse_turn_right(t):
-    gpio.output(33, gpio.HIGH)
+    print('reverse right')
+    gpio.output(right_reverse, gpio.HIGH)
     
     sleep(t)
-    gpio.output(33, gpio.LOW)
+    gpio.output(right_reverse, gpio.LOW)
     
 
 
 def reverse_turn_left(t):
-    gpio.output(38, gpio.HIGH)
+    print('reverse left')
+    gpio.output(left_reverse, gpio.HIGH)
     
     sleep(t)
-    gpio.output(38, gpio.LOW)
+    gpio.output(left_reverse, gpio.LOW)
     
  
 
 def hard_right(t=1.):
-    gpio.output(40, gpio.HIGH)
-    gpio.output(33, gpio.HIGH)
+    print('hard right')
+    gpio.output(left_forward, gpio.HIGH)
+    gpio.output(right_reverse, gpio.HIGH)
     
     sleep(t)
-    gpio.output(40, gpio.LOW)
-    gpio.output(33, gpio.LOW)
+    gpio.output(left_forward, gpio.LOW)
+    gpio.output(right_reverse, gpio.LOW)
     
 
 
 def hard_left(t=1.):
-    gpio.output(35, gpio.HIGH)
-    gpio.output(38, gpio.HIGH)
+    print('hard left')
+    gpio.output(right_forward, gpio.HIGH)
+    gpio.output(left_reverse, gpio.HIGH)
     
     sleep(t)
-    gpio.output(35, gpio.LOW)
-    gpio.output(38, gpio.LOW)
+    gpio.output(right_forward, gpio.LOW)
+    gpio.output(left_reverse, gpio.LOW)
       
     
 def stop1(t=1):
-    gpio.output(40, gpio.HIGH)
-    gpio.output(38, gpio.HIGH)
+    print('stop1')
+    gpio.output(left_forward, gpio.HIGH)
+    gpio.output(left_reverse, gpio.HIGH)
     
     sleep(t)
-    gpio.output(40, gpio.LOW)
-    gpio.output(38, gpio.LOW)
+    gpio.output(left_forward, gpio.LOW)
+    gpio.output(left_reverse, gpio.LOW)
       
     
 def stop2(t=1):
-    gpio.output(35, gpio.HIGH)
-    gpio.output(33, gpio.HIGH)
+    print('stop2')
+    gpio.output(right_forward, gpio.HIGH)
+    gpio.output(right_reverse, gpio.HIGH)
     
     sleep(t)
-    gpio.output(35, gpio.LOW)
-    gpio.output(33, gpio.LOW)
+    gpio.output(right_forward, gpio.LOW)
+    gpio.output(right_reverse, gpio.LOW)
       
   
 
 # test
 
-
+'''
 go_forward(2.)
 go_backward(2.)
+
 
 stop1(1)
 
 reverse_turn_right(2.)
 reverse_turn_left(2.)
-
+'''
 turn_left(2.)
 turn_right(2.)
 
 stop2(1)
-
+'''
 hard_left(2.)
 hard_right(2.)
-
+'''
 
 
 # clean up
