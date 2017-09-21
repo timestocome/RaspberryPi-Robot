@@ -121,7 +121,7 @@ https://pishop.co.za/blog/my-tutorial-post/clone-your-micro-sd-directly-on-rpi/
 
 VNC lets you move files between your computer and the Pi
 https://www.realvnc.com/en/connect/docs/file-transfer.html
-
+https://www.realvnc.com/en/connect/docs/file-transfer.html#file-transfer-troubleshoot
 
 
 
