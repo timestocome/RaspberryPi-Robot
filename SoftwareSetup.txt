@@ -88,6 +88,15 @@ passwd: raspberry
 Set the VNC to run at boot every time you start your RaspberryPi
 > sudo systemctl enable vncserver-x11-serviced.service
 
+Edit /boot/config.txt on RaspberryPi to get a full screen resolution on your desktop
+https://support.realvnc.com/knowledgebase/article/View/523/2/troubleshooting-vnc-server-on-the-raspberry-pi
+----
+hdmi_force_hotplug=1
+hdmi_ignore_edid=0xa5000080
+hdmi_group=2
+hdmi_mode=16
+----
+
 
 Set Keyboard to US
 > sudo vi /ect/default/keyboard
