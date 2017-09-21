@@ -9,6 +9,10 @@ Raspberry Pi Camera
 Small bread board
 330 Ohm resistor
 470 Ohm resistor
+PowerPack ExpansionBoard + Battery holder (Pi)
+5V/2A 2 battery battery holder (wheel motors)
+
+Robot1 also has a PCA9685 PWM Servo Driver
 
 mIsc - wires, small nuts and bolts, small piece of plexiglass to hold camera and sonic sensor
 
