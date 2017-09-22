@@ -1,6 +1,8 @@
 # http://github.com/timestocome
 
 
+# train a raspberry pi robot to wander the house while avoiding obstacles
+
 
 import tensorflow as tf
 import tensorflow.contrib.slim as slim
@@ -29,18 +31,18 @@ gpio.setup(trigger, gpio.OUT)
 gpio.setup(echo, gpio.IN)
 
 
-# wheels ( 2 wheel motors, front wheel drive )
+# wheels ( 4 wheel motors )
 reverse_left = 38
-reverse_right = 33
+reverse_right = 35
 forward_left = 40
-forward_right = 35
+forward_right = 37
 
 gpio.setup(reverse_left, gpio.OUT)  
 gpio.setup(forward_left, gpio.OUT)  
 gpio.setup(forward_right, gpio.OUT) 
 gpio.setup(reverse_right, gpio.OUT) 
 
-
+wheel_pulse = 0.1
 
 ##############################################################################
 # load data from HC-SR204 UltraSonic distance sensor
@@ -49,7 +51,7 @@ gpio.setup(reverse_right, gpio.OUT)
 # init 
 pulse_start = 0.
 pulse_end = 0.
-distance_from_sensor_to_car_front = 4 * 2.54
+distance_from_sensor_to_car_front = 2. * 2.54
 
 
 # flush sensor
@@ -58,7 +60,7 @@ time.sleep(0.5)
 
 
 # distance to obstacle in path
-def get_state(sleep_time=0.1):
+def get_state(sleep_time=wheel_pulse):
 
     # clear trigger sensor
     gpio.output(trigger, False)
@@ -80,12 +82,12 @@ def get_state(sleep_time=0.1):
     distance = pulse_duration * 343 * 100 / 2.  # speed of sound m/s * m to cm / round trip
     
     if distance > 2 and distance < 400:         # sensor range
-        distance = distance - distance_from_sensor_to_car_front
+        distance = distance + distance_from_sensor_to_car_front
 
     # don't worry about things further 4'
     # this also reduces the size of the state machine
-    if distance > max_distance:    
-        distance = max_distance - distance_from_sensor_to_car_front
+    if distance >= max_distance:    
+        distance = max_distance - 1
 
     return int(distance)
 
@@ -96,10 +98,10 @@ def get_state(sleep_time=0.1):
 ##############################################################################
 # perform action
 ##############################################################################
-actions = ['forward', 'reverse', 'turn_left', 'turn_right']
+actions = ['forward', 'reverse', 'turn_left', 'turn_right', 'hard_left', 'hard_right']
 
 
-def forward(t=1.):
+def forward(t=wheel_pulse):
     
     gpio.output(forward_right, gpio.HIGH)
     gpio.output(forward_left, gpio.HIGH)
@@ -109,7 +111,7 @@ def forward(t=1.):
     gpio.output(forward_left, gpio.LOW)
     
 
-def turn_left(t=1.):
+def turn_left(t=wheel_pulse):
     gpio.output(forward_right, gpio.HIGH)
     
     sleep(t)
@@ -117,7 +119,7 @@ def turn_left(t=1.):
     
 
 
-def turn_right(t=1.):
+def turn_right(t=wheel_pulse):
     gpio.output(forward_left, gpio.HIGH)
     
     sleep(t)
@@ -125,7 +127,7 @@ def turn_right(t=1.):
     
 
 
-def reverse(t=1.):
+def reverse(t=wheel_pulse):
     
     gpio.output(reverse_left, gpio.HIGH)
     gpio.output(reverse_right, gpio.HIGH)
@@ -136,7 +138,7 @@ def reverse(t=1.):
     
     
 
-def hard_right(t=1.):
+def hard_right(t=wheel_pulse):
     gpio.output(forward_left, gpio.HIGH)
     gpio.output(reverse_right, gpio.HIGH)
     
@@ -146,7 +148,7 @@ def hard_right(t=1.):
     
 
 
-def hard_left(t=1.):
+def hard_left(t=wheel_pulse):
     gpio.output(forward_right, gpio.HIGH)
     gpio.output(reverse_left, gpio.HIGH)
     
@@ -189,32 +191,29 @@ class world():
         reward = 0
         self.states[state] += 1
         
-        # robot doesn't know it is stuck at wall if wheels
-        # still spinning forward
-        if state <= 2.5 * distance_from_sensor_to_car_front:
-            reward -= 3.0
+        # penatly for being too closes to an obstacle
+        if state <= 2.54 * 5.:   # buffer zone converted to cm
+            reward = -3.0
 
         if action == 0:         
-            forward(1)
+            forward()
             reward = 1
         elif action == 1:       
-            reverse(1)
-            reward = -1
+            reverse()
+            reward = 1
         elif action == 2:       
-            turn_left(2)
-            reward = 1
-        elif action == 3:      
-            turn_right(2)
-            reward = 1
-            
-        '''
-        elif action == 4:       
-            turn_right()
-            reward = 1
-        elif action == 5:       
             turn_left()
             reward = 1
-        '''
+        elif action == 3:      
+            turn_right()
+            reward = 1
+        elif action == 4:       
+            hard_right()
+            reward = 1
+        elif action == 5:       
+            hard_left()
+            reward = 1
+        
         print("state %d,  action %d,  reward %d" % (state, action, reward))
 
         return reward
@@ -263,7 +262,7 @@ total_episodes = 1000 + 1 # up this to loop forever once everything works
 total_reward = np.zeros([world.num_states, world.num_actions])
 
 # numpy was resetting? idk heavily favoring 0, this is a hack around it
-random_actions = np.random.random_integers(0, 3, total_episodes)
+random_actions = np.random.random_integers(0, world.num_actions-1, total_episodes)
 
 
 # used for debugging - remove in final version to speed things up
@@ -283,10 +282,11 @@ with tf.Session() as sess:
     while i < total_episodes:
         s = get_state()
         e *= 0.95        # reduce random searching over time
-        e = max(e, .1)   # keep epislon over 10%
+        e = max(e, .2)   # keep epislon over 10%
 
         if np.random.rand(1) < e:
             action = random_actions[i]
+            print('******      random action', action)
         else:
             action = sess.run(robot.chosen_action, feed_dict={robot.state_in:[s]})
 
