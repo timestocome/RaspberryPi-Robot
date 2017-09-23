@@ -17,8 +17,12 @@ PartsList.txt has parts listed as I acquire and add them
 
 test*.py are simple scripts to make sure hardware is on and connecting to the RaspberryPi
 
+Test hardware scripts contains very simple Python scripts to separately test robot hardware
+
 Obstacle Avoidance uses reinforcement learning to train each robot wander around while avoiding obstacles
 
 Tracking Scripts will store OpenCV scripts used to ID and follow or avoid humans and pets
+
+Utility scripts are misc data cleaning and other random scripts that are necessary but not part of main project
 
 
