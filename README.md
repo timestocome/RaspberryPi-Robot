@@ -17,4 +17,4 @@ PartsList.txt has parts listed as I acquire and add them
 
 test*.py are simple scripts to make sure hardware is on and connecting to the RaspberryPi
 
-I think everything is working, final hardware tests tomorrow, should be mostly software updates hereafter
+Obstacle Avoidance uses reinforcement learning to train each robot wander around while avoiding obstacles
