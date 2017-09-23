@@ -11,7 +11,7 @@ Project goal is to set up a robot car with a camera to interact with household m
 
 SoftwareSetup.txt has links to any software I use along with any instructions needed to set it up
 
-HardwareSetup.txt will have links and detailed directions as I get things running
+HardwareSetup.txt has links to detailed directions to get hardware running
 
 PartsList.txt has parts listed as I acquire and add them
 
