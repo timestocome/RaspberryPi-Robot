@@ -11,3 +11,8 @@ Slowly reduce random choices over time
 Choose a very small state space 
 --- the sensor can read 2cm - 400, reducing the far distance reduces the state machine and speeds up learning
 
+
+Movies of each robot 
+https://photos.app.goo.gl/PFUZbyGp2EM4hhrR2
+
+
