@@ -26,3 +26,6 @@ Tracking Scripts will store OpenCV scripts used to ID and follow or avoid humans
 Utility scripts are misc data cleaning and other random scripts that are necessary but not part of main project
 
 
+Photos and movies
+https://photos.app.goo.gl/OZ2WZesJWuyISXQD3
+
