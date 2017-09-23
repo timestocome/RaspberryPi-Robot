@@ -15,6 +15,7 @@ Choose a very small state space
 
 Movies of each robot learning to wander with out hitting things
 
-https://photos.app.goo.gl/PFUZbyGp2EM4hhrR2
+https://photos.app.goo.gl/OZ2WZesJWuyISXQD3
+
 
 
