@@ -124,5 +124,12 @@ https://www.realvnc.com/en/connect/docs/file-transfer.html
 https://www.realvnc.com/en/connect/docs/file-transfer.html#file-transfer-troubleshoot
 
 
+------- Misc -------
+
+You'll want to leave the default /usr/bin/python pointed to 2.7 when installing software
+
+
+
+
 
 
