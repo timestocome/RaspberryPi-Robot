@@ -38,6 +38,10 @@ Install TensorFlow
 - First check to be sure you are using the Python V3.4 installed with Mini Anaconda
 https://github.com/samjabrahams/tensorflow-on-raspberry-pi
 
+- TensorFlow Object Detection model and installation instructions
+https://github.com/tensorflow/models/tree/master/research/object_detection
+
+
 
 -----     Setup camera    -----
 
