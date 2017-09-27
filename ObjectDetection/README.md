@@ -3,16 +3,19 @@ Object Detection on RaspberryPi using Google's TensorFlow Object Detection Model
 
 
 You'll need to download TensorFlow Models
+
 https://github.com/tensorflow/models
 
 
 Follow the directions here to install, test the model
+
 https://github.com/tensorflow/models/tree/master/research/object_detection
 
 
 Once it all works you can move the 'object_detection' directory out to your home directory
 
 Re-run from one directory up from your object_detection directory
+
 protoc object_detection/protos/*.proto --python_out=.
 
 
