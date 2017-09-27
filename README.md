@@ -25,6 +25,8 @@ Tracking Scripts will store OpenCV scripts used to ID and follow or avoid humans
 
 Utility scripts are misc data cleaning and other random scripts that are necessary but not part of main project
 
+Object Detection contains instructions and a script to do object detection on the Pi - WIP still needs a script to take photos every x time steps and act on objects it recognizes ( ie follow a human, run from a cat... )
+
 
 Photos and movies
 https://photos.app.goo.gl/OZ2WZesJWuyISXQD3
