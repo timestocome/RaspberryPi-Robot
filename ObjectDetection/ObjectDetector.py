@@ -3,35 +3,27 @@
 
 # started here:
 # http://github.com/tensorflow/models/blob/master/research/object_detection
+# https://medium.com/towards-data-science/building-a-real-time-object-recognition-app-with-tensorflow-and-opencv-b7a2b4ebdc32
+
+
 
 import numpy as np
 import os
-import six.moves.urllib as urllib
 import sys
-import tarfile
 import tensorflow as tf
-import zipfile
 
 from collections import defaultdict
 from io import StringIO
-from matplotlib import pyplot as plt
 from PIL import Image
 
-
 from utils import label_map_util
-from utils import visualization_utils as vis_util
+
 
 # env
 sys.path.append("..")
 
-
-# What model to download.
-MODEL_NAME = 'ssd_mobilenet_v1_coco_11_06_2017'
-MODEL_FILE = MODEL_NAME + '.tar.gz'
-
-
 # Path to frozen detection graph. This is the actual model that is used for the object detection.
-PATH_TO_CKPT = MODEL_NAME + '/frozen_inference_graph.pb'
+PATH_TO_CKPT = 'ssd_mobilenet_v1_coco_11_06_2017'+ '/frozen_inference_graph.pb'
 
 # List of the strings that is used to add correct label for each box.
 PATH_TO_LABELS = os.path.join('data', 'mscoco_label_map.pbtxt')
@@ -50,6 +42,7 @@ with detection_graph.as_default():
     od_graph_def.ParseFromString(serialized_graph)
     tf.import_graph_def(od_graph_def, name='')
 
+
 # load label map
 label_map = label_map_util.load_labelmap(PATH_TO_LABELS)
 categories = label_map_util.convert_label_map_to_categories(label_map, max_num_classes=NUM_CLASSES, use_display_name=True)
@@ -65,21 +58,19 @@ def load_image_into_numpy_array(image):
 
 
 # test detection
-# For the sake of simplicity we will use only 2 images:
+# For the sake of simplicity we will use only 3 images:
 # image1.jpg
 # image2.jpg
+# image3.jpg
 # If you want to test the code with your images, just add path to the images to the TEST_IMAGE_PATHS.
 PATH_TO_TEST_IMAGES_DIR = 'test_images'
 TEST_IMAGE_PATHS = [ os.path.join(PATH_TO_TEST_IMAGES_DIR, 'image{}.jpg'.format(i)) for i in range(1, 4) ]
-
-# Size, in inches, of the output images.
-IMAGE_SIZE = (12, 8)
 
 
 
 with detection_graph.as_default():
     
-  with tf.Session(graph=detection_graph) as sess:
+    sess = tf.Session(graph=detection_graph)  
     
     # Definite input and output Tensors for detection_graph
     image_tensor = detection_graph.get_tensor_by_name('image_tensor:0')
@@ -109,20 +100,12 @@ with detection_graph.as_default():
       (boxes, scores, classes, num) = sess.run(
           [detection_boxes, detection_scores, detection_classes, num_detections],
           feed_dict={image_tensor: image_np_expanded})
+     
+     # Print names and locations of first few items with confidence > 80%
+      for s in range(5):
+          if scores[0, s] > .80:
+              print('--------------------------')
+              print(boxes.shape, boxes[0, s])
+              print("object", category_index.get(int(classes[0, s])).get('name'))
       
-      # Visualization of the results of a detection.
-      vis_util.visualize_boxes_and_labels_on_image_array(
-          image_np,
-          np.squeeze(boxes),
-          np.squeeze(classes).astype(np.int32),
-          np.squeeze(scores),
-          category_index,
-          use_normalized_coordinates=True,
-          line_thickness=8)
-      
-      
-      plt.figure(figsize=IMAGE_SIZE)
-      plt.imshow(image_np)
-      plt.show()
-
     
