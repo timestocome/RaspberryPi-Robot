@@ -14,7 +14,6 @@ import tensorflow as tf
 
 from collections import defaultdict
 
-from PIL import Image
 
 from utils import label_map_util
 
@@ -70,12 +69,10 @@ with detection_graph.as_default():
     detection_classes = detection_graph.get_tensor_by_name('detection_classes:0')
     num_detections = detection_graph.get_tensor_by_name('num_detections:0')
     
-    # next to do is to load this via pi camera as numpy array 
-    image = Image.open('camera_images/image.jpg')
     
-    # the array based representation of the image will be used later in order to prepare the
-      # result image with boxes and labels on it.
-    image_np = load_image_into_numpy_array(image)
+    # load an image from camera that has been stored as a numpy array
+    image_np = np.load('image_cat.npy')
+    
     
     # Expand dimensions since the model expects images to have shape: [1, None, None, 3]
     image_np_expanded = np.expand_dims(image_np, axis=0)
@@ -91,4 +88,6 @@ with detection_graph.as_default():
           if scores[0, s] > .80:
               print(category_index.get(int(classes[0, s])).get('name'), boxes[0,s])
       
+    
+    
     
