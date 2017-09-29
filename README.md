@@ -23,24 +23,18 @@ Next To do:
 - feedback ? face, text, some type of visual output
 - loop to run obstacle avoidance, cat id, tracking, feedback all together
 
+Find things:
+- SoftwareSetup.txt has links to any software I use along with any instructions needed to set it up
+- HardwareSetup.txt has links to detailed directions to get hardware running
+- PartsList.txt has parts listed as I acquire and add them
+- test*.py are simple scripts to make sure hardware is on and connecting to the RaspberryPi
+- Test hardware scripts contains very simple Python scripts to separately test robot hardware
+- Obstacle Avoidance uses reinforcement learning to train each robot wander around while avoiding obstacles
+- Tracking Scripts will store OpenCV scripts used to ID and follow or avoid humans and pets
+- Utility scripts are misc data cleaning and other random scripts that are necessary but not part of main project
+- Object Detection contains instructions and a script to do object detection on the Pi - WIP still needs a script to take photos every x time steps and act on objects it recognizes ( ie follow a human, run from a cat... )
+- Cat ID network can recognise both of our cats
 
-SoftwareSetup.txt has links to any software I use along with any instructions needed to set it up
-
-HardwareSetup.txt has links to detailed directions to get hardware running
-
-PartsList.txt has parts listed as I acquire and add them
-
-test*.py are simple scripts to make sure hardware is on and connecting to the RaspberryPi
-
-Test hardware scripts contains very simple Python scripts to separately test robot hardware
-
-Obstacle Avoidance uses reinforcement learning to train each robot wander around while avoiding obstacles
-
-Tracking Scripts will store OpenCV scripts used to ID and follow or avoid humans and pets
-
-Utility scripts are misc data cleaning and other random scripts that are necessary but not part of main project
-
-Object Detection contains instructions and a script to do object detection on the Pi - WIP still needs a script to take photos every x time steps and act on objects it recognizes ( ie follow a human, run from a cat... )
 
 
 Photos and movies
