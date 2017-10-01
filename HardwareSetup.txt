@@ -9,11 +9,10 @@ Raspberry Pi Camera + camera mounting bracket
 Small bread board
 330 Ohm resistor
 470 Ohm resistor
-PowerPack ExpansionBoard + Battery holder (Pi)
-5V/2A 2 battery battery holder (wheel motors)
+5V/2A 2 or 4 battery battery holder (wheel motors, I'm using one battery per wheel motor)
 SD card for Raspberry Pi (16GB or larger)
 Separate battery pack for Pi (https://www.amazon.com/gp/product/B06Y2XBV8Q)
-Batteries to run wheels (I'm using 3.7V 2200 mA Li)
+Batteries to run wheels (I'm using 3.7V 2200mA Li)
 misc - wires, small screws and bolts, spacers (https://www.amazon.com/gp/product/B06XMR8S9J/)
 
 
