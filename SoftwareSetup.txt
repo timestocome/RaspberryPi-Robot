@@ -62,6 +62,20 @@ https://raspberrypi.stackexchange.com/questions/69169/how-to-install-opencv-on-r
 Access and test OpenCV with Python
 http://www.pyimagesearch.com/2015/03/30/accessing-the-raspberry-pi-camera-with-opencv-and-python/
 
+-----  Set up object recognition -----
+
+Google directions ( start here to be sure you understand how to use and load models):
+
+https://github.com/tensorflow/models/tree/master/research
+
+list of models:
+
+https://github.com/tensorflow/models/blob/master/research/slim/nets/mobilenet_v1.md
+
+directions to train a model on your images:
+
+https://hackernoon.com/creating-insanely-fast-image-classifiers-with-mobilenet-in-tensorflow-f030ce0a2991
+
 
 -----     Setup  Wifi, fixed ip and VNC   -----
 
