@@ -10,11 +10,11 @@ Project goal is to set up a robot car with a camera to interact with household m
 
 Progress:
 - Robot learns to avoid obstacles using Reinforcement learning
-- Robot can ID both the cats from photos it takes
+- Robot can ID both the cats, if in photo, from photos it takes
 
 
 Pending:
-- waiting on sturdier camera and sonic sensor mounting before adding cat tracking
+- waiting on sonic sensor mounting before adding cat tracking
 - waiting on Google AIY voice kit to see if it'll work for chat, notifications
 
 
@@ -22,6 +22,7 @@ Next To do:
 - track cats
 - feedback ? face, text, some type of visual output
 - loop to run obstacle avoidance, cat id, tracking, feedback all together
+
 
 Find things:
 - SoftwareSetup.txt has links to any software I use along with any instructions needed to set it up
