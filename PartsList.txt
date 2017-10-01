@@ -5,21 +5,24 @@ Robot 1 (clear chassis)
 - RaspberryPi 3 https://www.amazon.com/Raspberry-Model-1-2GHz-64-bit-quad-core/dp/B01CD5VC92/
 - L298N Dual H Bridge Stepper Motor https://www.amazon.com/gp/product/B00AJGM37I
 - PCA9685 16 Channel, 12 Bit PWM Servo Driver https://www.amazon.com/gp/product/B014KTSMLA
-- Micro SD card 16 GB
+- Micro SD card 16 GB or larger
 - 370, 440 Ohm resistors, small bread board
 - Batteries, battery holder for wheel motor batteries
 - Battery Power Pack Expansion Board for Pi https://www.amazon.com/gp/product/B06Y2XBV8Q
 - misc wires https://www.amazon.com/gp/product/B01IB7UOFE
-
+- camera mounting bracket (https://www.adafruit.com/product/1434)
+- ultrasonic sensor mounting bracket ( https://www.amazon.com/gp/product/B01FDGU0GY/)
 
 
 Robot 2 (black chassis)
 - Actobatics Whippersnapper Rover http://www.frys.com/product/8458148?site=sr:SEARCH:MAIN_RSLT_PG 
 - RaspberryPi 3 https://www.amazon.com/Raspberry-Model-1-2GHz-64-bit-quad-core/dp/B01CD5VC92/
 - SainSmart L298N Dual H Bridge Stepper Motor https://www.amazon.com/gp/product/B00AJGM37I/
-- Micro SD card 32 GB
+- Micro SD card 16 GB or larger
 - 370, 440 Ohm resistors, small bread board
 - Battery case and batteries
 - Battery Power Pack Expansion Board for Pi https://www.amazon.com/gp/product/B06Y2XBV8Q
 - RaspberryPi Camera Module V2 - 8 MP https://www.amazon.com/Raspberry-Pi-Camera-Module-Megapixel/dp/B01ER2SKFS/
 - misc wires https://www.amazon.com/gp/product/B01IB7UOFE
+- camera mounting bracket
+- ultrasonic sensor mounting bracket
