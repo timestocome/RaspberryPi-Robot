@@ -1,5 +1,11 @@
 # http://github.com/timestocome
-# cleaned up and streamlined to run on RaspberryPi
+
+# take photo with PiCamera
+# determine if cat in photo
+
+# takes ~3 seconds to load
+# runs > 60fps, probably faster when not printing to screen
+
 
 
 import sys
@@ -22,6 +28,7 @@ input_std = 255
 
 
 # setup graph
+# this is the saved graph that was trained on a desktop
 model_file = "output_graph.pb"
 label_file = "output_labels.txt"
 input_layer = "input"
@@ -55,26 +62,6 @@ def load_graph(model_file):
 
 
 
-def capture_image():
-    
-  image = np.empty((width, height, 3), dtype=np.uint8)
-  camera.capture(image, 'rgb')
-  
-    
-  input_name = "file_reader"
-  output_name = "normalized"
-  
-  float_caster = tf.cast(image, tf.float32)
-  dims_expander = tf.expand_dims(float_caster, 0);
-  resized = tf.image.resize_bilinear(dims_expander, [height, width])
-  normalized = tf.divide(tf.subtract(resized, [input_mean]), [input_std])
-  sess = tf.Session()
-  result = sess.run(normalized)
-
-  return result
-
-
-
 def load_labels(label_file):
     
   label = []
@@ -88,7 +75,23 @@ def load_labels(label_file):
 
 
 
+
+def capture_image():
     
+  image = np.empty((width, height, 3), dtype=np.uint8)
+  camera.capture(image, 'rgb')
+  
+  float_caster = tf.cast(image, tf.float32)
+  dims_expander = tf.expand_dims(float_caster, 0);
+  resized = tf.image.resize_bilinear(dims_expander, [height, width])
+  
+  normalized = tf.divide(tf.subtract(resized, [input_mean]), [input_std])
+  sess = tf.Session()
+  result = sess.run(normalized)
+
+  return result
+
+
 
 
  
@@ -97,28 +100,36 @@ graph = load_graph(model_file)
 labels = load_labels(label_file)
 sess = tf.Session(graph=graph)
 
-
 input_name = "import/" + input_layer
 output_name = "import/" + output_layer
 
 print('Graph loaded', datetime.datetime.now())
 
 
+
+# loop forever
+counter = 0
+
 while(True):
   
+  # take photo
   t = capture_image()
   
+  # see if Min, Merlin or no cat in photo
   input_operation = graph.get_operation_by_name(input_name);
   output_operation = graph.get_operation_by_name(output_name);
 
   results = sess.run(output_operation.outputs[0], {input_operation.outputs[0]: t})
   results = np.squeeze(results)
 
-  top_k = results.argsort()[-5:][::-1]
+  top_k = results.argsort()[-3:][::-1]
   
+  # print results
   for i in top_k:
     print(labels[i], results[i])
-  print("next image", datetime.datetime.now())
+    
+  counter += 1
+  print("next image", counter, datetime.datetime.now())
   
   
   
