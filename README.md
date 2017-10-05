@@ -19,7 +19,7 @@ Pending:
 
 
 Next To do:
-- track cats
+- track cats ( find cats takes photo and checks for cat - next is to add motion )
 - feedback ? face, text, some type of visual output
 - loop to run obstacle avoidance, cat id, tracking, feedback all together
 
