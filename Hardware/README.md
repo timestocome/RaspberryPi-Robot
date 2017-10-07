@@ -31,10 +31,12 @@ Robot 2 (black chassis)
 
 
 Python script to test wheels:
+
 https://github.com/timestocome/RaspberryPi/blob/master/testWheels.py
 
 
 Source:
+
 http://deepaksinghviblog.blogspot.com/2014/08/raspberrypi-to-run-dc-motor-using-l298n.html
 
 
@@ -45,10 +47,12 @@ http://deepaksinghviblog.blogspot.com/2014/08/raspberrypi-to-run-dc-motor-using-
 Turn on the camera in Raspberry Pi Configuration ( under preferences )
 
 Python script to test camera video and image capture:
+
 https://github.com/timestocome/RaspberryPi/blob/master/TestPiCamera.py
 
 
 Source:
+
 https://www.raspberrypi.org/learning/getting-started-with-picamera/requirements/
 
 
@@ -56,12 +60,14 @@ https://www.raspberrypi.org/learning/getting-started-with-picamera/requirements/
 ------- Ultra sonic sensor HC204 ---------
 
 Test script and notes to check SR204 is working
+
 https://github.com/timestocome/RaspberryPi/blob/master/test%20hardware%20scripts/TestUltraSonic.py
 
 
 ------- Handy things to know for debugging -------
 
 Turn on i2c interface so you can connect and run accessories off your RaspberryPi
+
 https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c
 
 > sudo raspi-config
