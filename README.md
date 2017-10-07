@@ -35,4 +35,3 @@ WIP:
 Photos of robots and movies
 https://photos.app.goo.gl/OZ2WZesJWuyISXQD3
 
-<img src="https://photos.app.goo.gl/AJ5yqnSuKV8jp4WK2"/>
