@@ -17,8 +17,8 @@ Goals:
 
 
 Finished Parts:
-- robot learns to avoid obstacles using Reinforcement learning
-- eobot can ID both the cats, if in photo, from photos it takes
+- robot learns to avoid obstacles using reinforcement learning with distance as the input
+- robot can ID both the cats, if a cat in photo, from photos it takes
 
 
 
