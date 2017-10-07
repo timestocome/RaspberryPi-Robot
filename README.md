@@ -17,16 +17,15 @@ Goals:
 
 
 Finished Parts:
-- Robot learns to avoid obstacles using Reinforcement learning
-- Robot can ID both the cats, if in photo, from photos it takes
+- robot learns to avoid obstacles using Reinforcement learning
+- eobot can ID both the cats, if in photo, from photos it takes
 
 
 
 WIP:
+- adapt the obstacle RL program to handle multiple inputs from various sensors
 - waiting on Google AIY voice kit to see if it'll work for chat, notifications
-- track cats ( robot can id each cat, or no cat, doesn't yet act on information )
 - feedback ? face, text, some type of visual output
-- loop to run obstacle avoidance, cat id, tracking, feedback all together
 
 
 
