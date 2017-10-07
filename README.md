@@ -35,4 +35,3 @@ WIP:
 Photos of robots and movies
 https://photos.app.goo.gl/OZ2WZesJWuyISXQD3
 
-![Photo of robot](https://photos.app.goo.gl/AJ5yqnSuKV8jp4WK2 "Clear Robot with Servo Steering")
