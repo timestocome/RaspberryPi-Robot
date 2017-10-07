@@ -18,7 +18,7 @@ https://etcher.io/
 
 
 Insert SD card into your computer (16GB+)
-- If your computer won't read it ( My Surface and iMac wouldn't see it)
+- If your computer won't read it ( My Surface and iMac wouldn't load some of the cards I tried)
 --- Stick the card in a camera and format it
 --- Then plug camera into computer and format with SD Formatter
 
@@ -27,26 +27,25 @@ Use the SD Formatter to do a full format
 Use Etcher.io to flash the OS onto the card ( be sure to unzip Raspbian first )
 
 
------     Install Machine Learning tools     -----
 
-Install Mini Anaconda
-https://www.continuum.io/blog/developer/anaconda-raspberry-pi
-https://stackoverflow.com/questions/39371772/how-to-install-anaconda-on-raspberry-pi-3-model-b
+-----    Set keyboard to US     -----
 
 
-Install TensorFlow
-- First check to be sure you are using the Python V3.4 installed with Mini Anaconda
-https://github.com/samjabrahams/tensorflow-on-raspberry-pi
-
-- TensorFlow Object Detection model and installation instructions
-https://github.com/tensorflow/models/tree/master/research/object_detection
+Set Keyboard to US
+> sudo vi /ect/default/keyboard
+- change 'gb' to 'us' and save
 
 
+-----     Install Emacs     -----
 
------     Setup camera    -----
+> sudo apt-get install emacs
+
+
+
+-----     Setup the Pi Camera    -----
 
 Enable the camera
-- Type raspi-config at a command prompt in the terminal
+> sudo raspi-config at a command prompt in the terminal
 - Select 5. Interfacing options
 - Select P1 Enable/Disable Camera
 - Select 'Finish' to save changes and reboot
@@ -56,25 +55,15 @@ Python library and basics for accessing the camera
 https://www.raspberrypi.org/documentation/usage/camera/python/README.md
 
 
-Install OpenCV
+-----     Install OpenCV     -----
 https://raspberrypi.stackexchange.com/questions/69169/how-to-install-opencv-on-raspberry-pi-3-in-raspbian-jessie
+
 
 Access and test OpenCV with Python
 http://www.pyimagesearch.com/2015/03/30/accessing-the-raspberry-pi-camera-with-opencv-and-python/
 
------  Set up object recognition -----
 
-Google directions ( start here to be sure you understand how to use and load models):
-https://github.com/tensorflow/models/tree/master/research
-
-list of models:
-https://github.com/tensorflow/models/blob/master/research/slim/nets/mobilenet_v1.md
-
-directions to train a model on your images:
-https://hackernoon.com/creating-insanely-fast-image-classifiers-with-mobilenet-in-tensorflow-f030ce0a2991
-
-
------     Setup  Wifi, fixed ip and VNC   -----
+-----     Setup  Wifi, fixed IP and VNC   -----
 
 Setup the wifi on the RaspberryPi
 https://howtoraspberrypi.com/connect-wifi-raspberry-pi-3-others/
@@ -113,9 +102,22 @@ hdmi_mode=16
 ----
 
 
-Set Keyboard to US
-> sudo vi /ect/default/keyboard
-- change 'gb' to 'us' and save
+-----     Install Mini Anaconda     -----
+
+https://www.continuum.io/blog/developer/anaconda-raspberry-pi
+https://stackoverflow.com/questions/39371772/how-to-install-anaconda-on-raspberry-pi-3-model-b
+
+
+-----     Install TensorFlow     -----
+
+- First check to be sure you are using the Python V3.4 
+> python --version
+
+- Then follow the directions here:
+https://github.com/samjabrahams/tensorflow-on-raspberry-pi
+
+- TensorFlow Object Detection model and installation instructions
+https://github.com/tensorflow/models/tree/master/research/object_detection
 
 
 
@@ -127,23 +129,26 @@ Convert *.dmg to *.img
 http://www.instructables.com/id/Restore-DMG-to-SD-Card-MAC-OS-X/
 
 
-
-PiClone copies your SD card to USB key
-https://pishop.co.za/blog/my-tutorial-post/clone-your-micro-sd-directly-on-rpi/
-
-
-------- Transfer Files between Desktop and RaspberryPi -------
+-------     Transfer Files between Desktop and RaspberryPi     -------
 
 VNC lets you move files between your computer and the Pi
 https://www.realvnc.com/en/connect/docs/file-transfer.html
 https://www.realvnc.com/en/connect/docs/file-transfer.html#file-transfer-troubleshoot
 
 
-------- Misc -------
+-------     Misc     -------
 
-You'll want to leave the default /usr/bin/python pointed to 2.7 when installing software
+You'll want to leave the default /usr/bin/python pointed to 2.7 when installing software (apt-get)
 
 
+-----     Change default Python version     -----
+
+> cd /usr/bin
+> sudo rm python
+
+> sudo ln -s python2.7 python
+or ...
+> sudo ln -s python3.4 python
 
 
 
