@@ -35,3 +35,8 @@ WIP:
 Photos of robots and movies
 https://photos.app.goo.gl/OZ2WZesJWuyISXQD3
 
+
+![robots](https://github.com/timestocome/RaspberryPi-Robot/blob/master/robots.jpg)
+
+
+
