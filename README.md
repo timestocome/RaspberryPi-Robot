@@ -1,43 +1,37 @@
 # Machine Learning on a Raspberry Pi Robot
 
-Project goal is to set up a robot car with a camera to interact with household members and pets and provide home security. This is where it all started, though it hasn't been nearly as easy as he makes it sound ( https://www.oreilly.com/learning/how-to-build-a-robot-that-sees-with-100-and-tensorflow )
+Project goal is to set up an autonomous robot car. 
 
-- autonomous motion tracking and following
-- autonomously recognize human and pet residents
-- interactive chat
-- send notifications of problems when humans not in the house
+This is where it all started, though it hasn't been nearly as easy as he makes it sound 
+( https://www.oreilly.com/learning/how-to-build-a-robot-that-sees-with-100-and-tensorflow )
+
+
+
+Goals:
+- autonomous tracking of pets
+- recognize each of the two household cats
+- autonomous movement around the house
+- interactive voice 
 - autonomous animated face ( eyes, ? ) 
 
-Progress:
+
+
+Finished Parts:
 - Robot learns to avoid obstacles using Reinforcement learning
 - Robot can ID both the cats, if in photo, from photos it takes
 
 
-Pending:
-- waiting on sonic sensor mounting before adding cat tracking
+
+WIP:
 - waiting on Google AIY voice kit to see if it'll work for chat, notifications
-
-
-Next To do:
-- track cats ( find cats takes photo and checks for cat - next is to add motion )
+- track cats ( robot can id each cat, or no cat, doesn't yet act on information )
 - feedback ? face, text, some type of visual output
 - loop to run obstacle avoidance, cat id, tracking, feedback all together
 
 
-Find things:
-- SoftwareSetup.txt has links to any software I use along with any instructions needed to set it up
-- HardwareSetup.txt has links to detailed directions to get hardware running
-- PartsList.txt has parts listed as I acquire and add them
-- test*.py are simple scripts to make sure hardware is on and connecting to the RaspberryPi
-- Test hardware scripts contains very simple Python scripts to separately test robot hardware
-- Obstacle Avoidance uses reinforcement learning to train each robot wander around while avoiding obstacles
-- Tracking Scripts will store OpenCV scripts used to ID and follow or avoid humans and pets
-- Utility scripts are misc data cleaning and other random scripts that are necessary but not part of main project
-- Object Detection contains instructions and a script to do object detection on the Pi - WIP still needs a script to take photos every x time steps and act on objects it recognizes ( ie follow a human, run from a cat... )
-- Cat ID network can recognise both of our cats
 
 
 
-Photos and movies
+Photos of robots and movies
 https://photos.app.goo.gl/OZ2WZesJWuyISXQD3
 
