@@ -41,6 +41,7 @@ http://deepaksinghviblog.blogspot.com/2014/08/raspberrypi-to-run-dc-motor-using-
 
 
 ------- RaspberryPi camera -------
+
 Turn on the camera in Raspberry Pi Configuration ( under preferences )
 
 Python script to test camera video and image capture:
