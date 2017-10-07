@@ -1,22 +1,32 @@
 
 
-------- Parts list -------
-Actobotics Whippersnapper Rover ( any robot base kit with wheels and wheel motors will work )
-Raspberry Pi 3
-L298N Motor Driver
-HC-SR204 Ultrasonic Sensor + mounting bracket
-Raspberry Pi Camera + camera mounting bracket
-Small bread board
-330 Ohm resistor
-470 Ohm resistor
-5V/2A 2 or 4 battery battery holder (wheel motors, I'm using one battery per wheel motor)
-SD card for Raspberry Pi (16GB or larger)
-Separate battery pack for Pi (https://www.amazon.com/gp/product/B06Y2XBV8Q)
-Batteries to run wheels (I'm using 3.7V 2200mA Li)
-misc - wires, small screws and bolts, spacers (https://www.amazon.com/gp/product/B06XMR8S9J/)
+
+Robot 1 (clear chassis)
+- Smart Video Car Kit from SunFounderDirecthttps://www.amazon.com/gp/product/B014KK89BW/ (I couldn't get this kit to work so I just used it for parts)
+- RaspberryPi 3 https://www.amazon.com/Raspberry-Model-1-2GHz-64-bit-quad-core/dp/B01CD5VC92/
+- L298N Dual H Bridge Stepper Motor https://www.amazon.com/gp/product/B00AJGM37I
+- PCA9685 16 Channel, 12 Bit PWM Servo Driver https://www.amazon.com/gp/product/B014KTSMLA
+- Micro SD card 16 GB or larger
+- 370, 440 Ohm resistors, small bread board
+- Batteries, battery holder for wheel motor batteries
+- Battery Power Pack Expansion Board for Pi https://www.amazon.com/gp/product/B06Y2XBV8Q
+- misc wires https://www.amazon.com/gp/product/B01IB7UOFE
+- camera mounting bracket (https://www.adafruit.com/product/1434)
+- ultrasonic sensor mounting bracket ( https://www.amazon.com/gp/product/B01FDGU0GY/)
 
 
-Robot1 also has a PCA9685 PWM Servo Driver and servo to control the direction 
+Robot 2 (black chassis)
+- Actobatics Whippersnapper Rover http://www.frys.com/product/8458148?site=sr:SEARCH:MAIN_RSLT_PG 
+- RaspberryPi 3 https://www.amazon.com/Raspberry-Model-1-2GHz-64-bit-quad-core/dp/B01CD5VC92/
+- SainSmart L298N Dual H Bridge Stepper Motor https://www.amazon.com/gp/product/B00AJGM37I/
+- Micro SD card 16 GB or larger
+- 370, 440 Ohm resistors, small bread board
+- Battery case and batteries
+- Battery Power Pack Expansion Board for Pi https://www.amazon.com/gp/product/B06Y2XBV8Q
+- RaspberryPi Camera Module V2 - 8 MP https://www.amazon.com/Raspberry-Pi-Camera-Module-Megapixel/dp/B01ER2SKFS/
+- misc wires https://www.amazon.com/gp/product/B01IB7UOFE
+- camera mounting bracket
+- ultrasonic sensor mounting bracket
 
 
 
