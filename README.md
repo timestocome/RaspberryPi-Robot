@@ -29,4 +29,6 @@ https://photos.app.goo.gl/OZ2WZesJWuyISXQD3
 ![robots](https://github.com/timestocome/RaspberryPi-Robot/blob/master/robots.jpg)
 
 
+Robot with clear body has a servo to turn front wheels and rear wheel drive
 
+Robot with black body has 4 wheel drive and uses wheels to steer
