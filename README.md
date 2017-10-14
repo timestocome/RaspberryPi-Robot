@@ -12,11 +12,12 @@ This is where it all started, though it hasn't been nearly as easy as he makes i
 Finished Parts:
 - robot learns to avoid obstacles using reinforcement learning with distance as the input
 - robot can ID both the cats, if a cat in photo, from photos it takes
+- adapt the obstacle RL program to handle multiple inputs from various sensors
 
 
 
 WIP:
-- adapt the obstacle RL program to handle multiple inputs from various sensors
+- adjust cost functions, rewards, and speed things up
 
 
 
