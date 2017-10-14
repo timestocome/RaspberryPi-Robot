@@ -14,8 +14,8 @@ class FindDistance(object):
         gpio.setmode(gpio.BOARD)
 
         # set up  and init 
-        self.trigger = 11
-        self.echo = 13
+        self.trigger = 13
+        self.echo = 11
 
         gpio.setup(self.trigger, gpio.OUT)
         gpio.setup(self.echo, gpio.IN)
@@ -31,8 +31,9 @@ class FindDistance(object):
         
         # clear trigger
         gpio.output(self.trigger, False)
-        time.sleep(0.5)
+        time.sleep(0.1)
     
+        print('checking.....')
         # send pulse to trigger
         gpio.output(self.trigger, True)
         time.sleep(0.00001)
@@ -41,12 +42,12 @@ class FindDistance(object):
     
         # check echo for return signal
         while gpio.input(self.echo) == 0:
-            pulse_start = time.time()
+            self.pulse_start = time.time()
     
         while gpio.input(self.echo) == 1:
-            pulse_end = time.time()
+            self.pulse_end = time.time()
         
-        pulse_duration = pulse_end - pulse_start
+        pulse_duration = self.pulse_end - self.pulse_start
         distance = self.speed_of_sound / 2. * pulse_duration
         distance = round(distance, 2)
         distance /= 2.54    # inches

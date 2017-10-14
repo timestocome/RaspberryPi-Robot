@@ -14,6 +14,7 @@ class MoveRobot(object):
 
     def __init__(self):
 
+        print('init robot gpio')
         # set up hardware
         gpio.setmode(gpio.BOARD)        # use pin numbers not gpio numbers
 
@@ -29,7 +30,7 @@ class MoveRobot(object):
         gpio.setup(self.forward_right, gpio.OUT) 
         gpio.setup(self.reverse_right, gpio.OUT) 
 
-        self.wheel_pulse = 0.1
+        self.wheel_pulse = 0.2
         self.actions = ['forward', 'reverse', 'turn_left', 'turn_right', 'hard_left', 'hard_right']
 
 
@@ -108,7 +109,7 @@ move_robot.turn_left()
 move_robot.turn_right()
 move_robot.hard_left()
 move_robot.hard_right()
-'''
 
+'''
 
 

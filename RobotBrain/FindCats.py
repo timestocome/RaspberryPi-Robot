@@ -25,6 +25,9 @@ class FindCats(object):
         self.input_mean = 0
         self.input_std = 255
 
+        self.min_cat = 0
+        self.merlin = 1
+        self.no_cat = 2
 
         # setup graph
         # this is the saved graph that was trained on a desktop
@@ -134,5 +137,4 @@ while(True):
     print(found_cat[0][0], found_cat[0][1])
 
 loop.cleanup()
-
-''' 
+'''
