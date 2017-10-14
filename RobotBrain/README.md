@@ -23,3 +23,7 @@ ToDo:
 - adjust rewards as needed
 - adjust cost function as needed
 - adjust network size if needed
+
+
+The robot is going to have to be a quick learner to survive Merlin
+<img src="https://github.com/timestocome/RaspberryPi-Robot/blob/master/RobotBrain/MerlinRobot.jpg"/>
