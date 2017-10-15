@@ -10,15 +10,16 @@ This is where it all started, though it hasn't been nearly as easy as he makes i
 
 
 Finished Parts:
-- robot learns to avoid obstacles using reinforcement learning with distance as the input
 - robot can ID both the cats, if a cat in photo, from photos it takes
-- adapt the obstacle RL program to handle multiple inputs from various sensors
-
+- robot can tell how mar it is from obstacles
 
 
 WIP:
-- adjust cost functions, rewards, and speed things up
+- use reinforcement learning to avoid obstacles and track cats
 
+
+* Deep RL Bootcamp (videos and slides)
+https://sites.google.com/view/deep-rl-bootcamp/lectures
 
 
 
