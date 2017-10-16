@@ -12,10 +12,12 @@ This is where it all started, though it hasn't been nearly as easy as he makes i
 Finished Parts:
 - robot can ID both the cats, if a cat in photo, from photos it takes
 - robot can tell how far it is from obstacles and learns to avoid them using reinforcement learning
-
+- robot uses simple QLearning RL algorithm to avoid obstacles and interact with cats
 
 WIP:
-- use reinforcement learning to avoid obstacles and track cats at same time
+- put cats to work training robots
+- speed up cat/no cat id
+- test other RL algorithms
 
 
 
