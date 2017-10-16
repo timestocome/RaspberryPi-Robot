@@ -14,10 +14,12 @@ I gave up on the tf.contrib.slim library. The contrib libraries all work until y
 
 
 Current status:
+
 Main loop reads distance to nearest obstacle and checks to see if cat1 or cat2 or no cat is in view.
 
 
 Working on:
+
 I still haven't gotten the RL algorithm to work with multiple rewards
 
 
