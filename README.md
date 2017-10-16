@@ -11,16 +11,11 @@ This is where it all started, though it hasn't been nearly as easy as he makes i
 
 Finished Parts:
 - robot can ID both the cats, if a cat in photo, from photos it takes
-- robot can tell how mar it is from obstacles
+- robot can tell how far it is from obstacles and learns to avoid them using reinforcement learning
 
 
 WIP:
-- use reinforcement learning to avoid obstacles and track cats
-
-
-* Deep RL Bootcamp (videos and slides)
-https://sites.google.com/view/deep-rl-bootcamp/lectures
-
+- use reinforcement learning to avoid obstacles and track cats at same time
 
 
 
