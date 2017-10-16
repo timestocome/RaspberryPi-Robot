@@ -13,16 +13,21 @@ use multiple sensor inputs not just distance.</strike>
 I gave up on the tf.contrib.slim library. The contrib libraries all work until you make the slightest change.
 
 
+Current status:
 
-Everything is up and running. 
+I still haven't gotten the RL algorithm to work with multiple rewards
+
+Working through:
+
+https://github.com/MorvanZhou/Reinforcement-learning-with-tensorflow
+
+https://sites.google.com/view/deep-rl-bootcamp/lectures
 
 
 ToDo:
 
 - speed things up 
-- adjust rewards as needed
-- adjust cost function as needed
-- adjust network size if needed
+- get RL algorithm to work on multiple targets (don't hit things, find cats)
 
 
 The robot is going to have to be a quick learner to survive Merlin
