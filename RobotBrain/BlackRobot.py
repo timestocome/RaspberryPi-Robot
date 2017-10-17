@@ -52,7 +52,7 @@ def get_cat():
 # robot actions   
 def move(action, distance, cat):
 
-    reward = 0
+    reward = 0.001
     min_distance = 12.
                 
     # penalty for being too closes to an obstacle
@@ -87,7 +87,7 @@ def move(action, distance, cat):
         reward += 1
 
 
-    print("state %d %d,  action %d,  reward %d" % (distance, cat, action, reward))
+    #print("state %d %d,  action %d,  reward %d" % (distance, cat, action, reward))
 
     return reward 
 
@@ -107,7 +107,7 @@ n_actions = len(actions)
 # training vars
 lr = 0.1            # learning rate
 gamma = 0.9         # memory (gamma^n_steps)
-n_loops = 50       # training loops to perform
+n_loops = 1000       # training loops to perform
 
 
 
@@ -145,7 +145,8 @@ def choose_action(d, c, q_table, epsilon):
     # random move or no data recorded for this state yet
     if (np.random.uniform() < epsilon) or (np.sum(state_actions) == 0):
         action_chose = np.random.randint(n_actions)
-        epsilon *= .99
+        #epsilon *= .99         # lots of random searching when table is zero 
+        if epsilon >  0.1: epsilon *= 0.8
     else:
         action_chose = state_actions.argmax()
     
@@ -156,10 +157,10 @@ def choose_action(d, c, q_table, epsilon):
 def rl():
     
     # init new table
-    q_table = init_q_table(n_distance_states, n_cat_states, n_actions)
+    #q_table = init_q_table(n_distance_states, n_cat_states, n_actions)
     
     # or continue using previous data
-    #q_table = load_q_table()
+    q_table = load_q_table()
     
     
     epsilon = 1.0       # random choice % decreases over time
@@ -171,7 +172,7 @@ def rl():
     
     while n_steps < n_loops:
         
-        print('step %d epsilon %lf' %(n_steps, epsilon))
+        #print('step %d epsilon %lf' %(n_steps, epsilon))
 
         # chose action and move robot
         a = choose_action(d, c, q_table, epsilon)
@@ -196,7 +197,7 @@ def rl():
         n_steps += 1
         
         # save data
-        if n_steps % 10 == 0:
+        if n_steps % 100 == 0:
             save_q_table(q_table)
             
     return q_table
@@ -226,7 +227,8 @@ q_table = rl()
 
 cleanup()
 
-
+#print(n_distance_states, n_cat_states, n_actions)
+q_table = load_q_table()
 print('--------------------------------')
 print('Final Q Table')
 
@@ -237,5 +239,5 @@ for i in range(n_distance_states):
         
 
 
-save_q_table()
-load_q_table()
+#save_q_table()
+#load_q_table()
