@@ -9,12 +9,15 @@
 
 
 import numpy as np
+from pathlib import Path
+
+
 
 from FindCats import FindCats
 from FindDistance import FindDistance
 from MoveBlackRobot import MoveRobot
 
-import datetime
+#import datetime
 
 
 
@@ -153,16 +156,16 @@ def choose_action(d, c, q_table, epsilon):
     return action_chose
 
 
-
 def rl():
     
-    # init new table
-    q_table = init_q_table(n_distance_states, n_cat_states, n_actions)
-    
-    # or continue using previous data
-    #q_table = load_q_table()
-    
-    
+    # init new table if none found
+    saved_table = Path('qTable.npy')
+    if saved_table.is_file():
+        q_table = load_q_table()
+    else:
+        q_table = init_q_table(n_distance_states, n_cat_states, n_actions)
+
+        
     epsilon = 1.0       # random choice % decreases over time
 
     n_steps = 0
@@ -181,7 +184,7 @@ def rl():
         # update state
         d_next = get_distance()
         c_next = get_cat()
-        '
+        
         # what robot thought would happen next
         q_predict = q_table[d][c][a]
         
@@ -202,6 +205,7 @@ def rl():
             save_q_table(q_table)
         
         #print(datetime.datetime.now() - start)
+        
     return q_table
 
 

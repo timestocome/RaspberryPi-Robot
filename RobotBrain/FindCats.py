@@ -12,7 +12,7 @@ import numpy as np
 import tensorflow as tf
 import picamera
 
-import datetime
+#import datetime
 
 class FindCats(object):
     
@@ -98,7 +98,7 @@ class FindCats(object):
 
     def is_cat(self):
         
-        now = datetime.datetime.now()
+        #now = datetime.datetime.now()
         
         # take photo
         t = self.capture_image()
@@ -115,9 +115,8 @@ class FindCats(object):
         found = []
         for i in range(3):
             found.append((self.labels[i], results[i]))
-            
-            
-        print(datetime.datetime.now() - now)
+               
+        #print(datetime.datetime.now() - now)
         return found
         
     
