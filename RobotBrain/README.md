@@ -5,7 +5,7 @@ This section will contain the reinforcement network that allows the robot to res
 Current status:
 
 Main loop reads distance to nearest obstacle and checks to see if cat1 or cat2 or no cat is in view.
-Both robots are using a simplified QLearning algorithm to learn.
+Both robots are using a simplified QLearning Value algorithm to learn.
 
 If the files are reloaded each time the learning should improve with each run
 
