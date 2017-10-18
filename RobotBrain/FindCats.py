@@ -12,13 +12,13 @@ import numpy as np
 import tensorflow as tf
 import picamera
 
-
-
+import datetime
 
 class FindCats(object):
     
     def __init__(self):
 
+        print('init cats')
         # set up constants
         self.height = 128
         self.width = 128
@@ -74,10 +74,10 @@ class FindCats(object):
 
         # create session
         self.sess = tf.Session(graph=self.graph)
-
+        self.camera_sess = tf.Session()
     
 
-
+    
     def capture_image(self):
     
       image = np.empty((self.width, self.height, 3), dtype=np.uint8)
@@ -88,15 +88,16 @@ class FindCats(object):
       resized = tf.image.resize_bilinear(dims_expander, [self.height, self.width])
   
       normalized = tf.divide(tf.subtract(resized, [self.input_mean]), [self.input_std])
-      sess = tf.Session()
-      result = sess.run(normalized)
+      result = self.camera_sess.run(normalized)
 
       return result
-
+    
 
 
     def is_cat(self):
-
+        
+        now = datetime.datetime.now()
+        
         # take photo
         t = self.capture_image()
   
@@ -112,6 +113,9 @@ class FindCats(object):
         found = []
         for i in range(3):
             found.append((self.labels[i], results[i]))
+            
+            
+        print(datetime.datetime.now() - now)
         return found
         
     
@@ -131,7 +135,7 @@ class FindCats(object):
 '''
 loop = FindCats()
 
-while(True):
+for i in range(100):
     found_cat = loop.is_cat()
     print(found_cat)
     print(found_cat[0][0], found_cat[0][1])
