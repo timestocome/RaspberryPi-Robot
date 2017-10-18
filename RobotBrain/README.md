@@ -12,7 +12,7 @@ If the files are reloaded each time the learning should improve with each run
 
 To do:
 - reducing the number of states so the robots will train faster
-- speed things up, cat id is still very slow
+- speed things up, ~~cat id is still very slow~~ fixed, now steady at ~2 FPS
 - explore other RL algorithms
 
 
