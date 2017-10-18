@@ -83,15 +83,17 @@ class FindCats(object):
       image = np.empty((self.width, self.height, 3), dtype=np.uint8)
       self.camera.capture(image, 'rgb')
   
-      float_caster = tf.cast(image, tf.float32)
-      dims_expander = tf.expand_dims(float_caster, 0);
-      resized = tf.image.resize_bilinear(dims_expander, [self.height, self.width])
-  
-      normalized = tf.divide(tf.subtract(resized, [self.input_mean]), [self.input_std])
-      result = self.camera_sess.run(normalized)
+      float_caster = image.astype(np.float32)
+      dims_expander = float_caster.reshape(1, 128, 128, 3)
+      result = dims_expander - self.input_mean
+      result = result / self.input_std
+      
+      
 
       return result
     
+    
+        
 
 
     def is_cat(self):
@@ -138,7 +140,7 @@ loop = FindCats()
 for i in range(100):
     found_cat = loop.is_cat()
     print(found_cat)
-    print(found_cat[0][0], found_cat[0][1])
+    
 
 loop.cleanup()
 '''

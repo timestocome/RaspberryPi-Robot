@@ -14,7 +14,7 @@ from FindCats import FindCats
 from FindDistance import FindDistance
 from MoveBlackRobot import MoveRobot
 
-
+import datetime
 
 
 
@@ -107,7 +107,7 @@ n_actions = len(actions)
 # training vars
 lr = 0.1            # learning rate
 gamma = 0.9         # memory (gamma^n_steps)
-n_loops = 1000       # training loops to perform
+n_loops = 500       # training loops to perform
 
 
 
@@ -157,10 +157,10 @@ def choose_action(d, c, q_table, epsilon):
 def rl():
     
     # init new table
-    #q_table = init_q_table(n_distance_states, n_cat_states, n_actions)
+    q_table = init_q_table(n_distance_states, n_cat_states, n_actions)
     
     # or continue using previous data
-    q_table = load_q_table()
+    #q_table = load_q_table()
     
     
     epsilon = 1.0       # random choice % decreases over time
@@ -171,7 +171,7 @@ def rl():
     
     
     while n_steps < n_loops:
-        
+        #start = datetime.datetime.now()
         #print('step %d epsilon %lf' %(n_steps, epsilon))
 
         # chose action and move robot
@@ -181,7 +181,7 @@ def rl():
         # update state
         d_next = get_distance()
         c_next = get_cat()
-        
+        '
         # what robot thought would happen next
         q_predict = q_table[d][c][a]
         
@@ -194,12 +194,14 @@ def rl():
         # wrap up
         d = d_next
         c = c_next
+        
         n_steps += 1
         
         # save data
         if n_steps % 100 == 0:
             save_q_table(q_table)
-            
+        
+        #print(datetime.datetime.now() - start)
     return q_table
 
 
@@ -227,8 +229,9 @@ q_table = rl()
 
 cleanup()
 
-#print(n_distance_states, n_cat_states, n_actions)
-q_table = load_q_table()
+
+'''
+#q_table = load_q_table()
 print('--------------------------------')
 print('Final Q Table')
 
@@ -237,7 +240,7 @@ for i in range(n_distance_states):
         print('distance %d, cat %d' %(i, j))
         print('action values', q_table[i, j, :])
         
-
+'''
 
 #save_q_table()
 #load_q_table()
