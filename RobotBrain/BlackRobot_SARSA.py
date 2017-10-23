@@ -93,7 +93,7 @@ def move(action, distance, cat):
         reward += 1
 
 
-    #print("state %d %d,  action %d,  reward %d" % (distance, cat, action, reward))
+    print("state %d %d,  action %d,  reward %d" % (distance, cat, action, reward))
 
     return reward 
 
@@ -109,6 +109,7 @@ def move(action, distance, cat):
 n_distance_states = max_distance + 1
 n_cat_states = 3
 n_actions = len(actions)
+
 
 # training vars
 lr = 0.01               # learning rate
@@ -151,12 +152,14 @@ def choose_action(d, c, q_table, epsilon):
     if (np.random.uniform() < epsilon) or (np.sum(state_actions) == 0):
         
         action_chose = np.random.randint(n_actions)
+        print('random', action_chose)
     
         # decrease random moves over time to a minimum of 10%
         if epsilon >  0.1: epsilon *= 0.9
     
     else:
         action_chose = state_actions.argmax()
+        print('max', action_chose)
     
     return action_chose
 
@@ -207,12 +210,13 @@ def rl():
         # update state for next loop
         d = d_next
         c = c_next
+        a = a_
         
         n_steps += 1
         
         # save data every 100 steps incase of failure
         if n_steps % 100 == 0:
-            save_q_table(qTable)
+            save_q_table(q_table)
         
         
     return q_table
