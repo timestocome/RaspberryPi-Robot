@@ -15,6 +15,9 @@ To do:
 - speed things up, ~~cat id is still very slow~~ fixed, now steady at ~2 FPS
 - explore other RL algorithms
 
+WIP:
+- The SARSA algorithm trains significantly faster than the original
+
 
 Useful information:
 
