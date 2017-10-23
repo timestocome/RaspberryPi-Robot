@@ -21,7 +21,7 @@ from FindCats import FindCats
 from FindDistance import FindDistance
 from MoveBlackRobot import MoveRobot
 
-
+import datetime
 
 
 
@@ -39,6 +39,7 @@ moveRobot = MoveRobot()
 actions = moveRobot.actions
 
 qTable = 'qTable.npy'
+epsilon = 1.0
 
 
 # robot environment
@@ -93,7 +94,7 @@ def move(action, distance, cat):
         reward += 1
 
 
-    print("state %d %d,  action %d,  reward %d" % (distance, cat, action, reward))
+    #print("state %d %d,  action %d,  reward %d" % (distance, cat, action, reward))
 
     return reward 
 
@@ -144,22 +145,22 @@ def save_q_table(t):
     
 
 
-def choose_action(d, c, q_table, epsilon):
+def choose_action(d, c, q_table):
 
+    global epsilon
     state_actions = q_table[d][c][:]
 
     # random move or no data recorded for this state yet
     if (np.random.uniform() < epsilon) or (np.sum(state_actions) == 0):
         
         action_chose = np.random.randint(n_actions)
-        print('random', action_chose)
     
         # decrease random moves over time to a minimum of 10%
-        if epsilon >  0.1: epsilon *= 0.9
-    
+        if epsilon >  0.1:
+            epsilon *= 0.9
+        
     else:
         action_chose = state_actions.argmax()
-        print('max', action_chose)
     
     return action_chose
 
@@ -174,15 +175,14 @@ def rl():
         q_table = init_q_table(n_distance_states, n_cat_states, n_actions)
 
         
-    epsilon = 1.0       # random choice % decreases over time
     n_steps = 0
     
     
     # prime loop with first action
     d = get_distance()
     c = get_cat()
-    a = choose_action(d, c, q_table, epsilon)
-    
+    a = choose_action(d, c, q_table)
+    start_time = datetime.datetime.now()
     
     while n_steps < n_loops:
 
@@ -193,7 +193,7 @@ def rl():
         
         
         # chose action based on next observation
-        a_ = choose_action(d_next, c_next, q_table, epsilon)
+        a_ = choose_action(d_next, c_next, q_table)
         
         # SARSA learning
         s_target = reward + gamma + q_table[d_next][c_next][a_]
@@ -217,7 +217,8 @@ def rl():
         # save data every 100 steps incase of failure
         if n_steps % 100 == 0:
             save_q_table(q_table)
-        
+            print(datetime.datetime.now() - start_time)
+            start_time = datetime.datetime.now()
         
     return q_table
 
