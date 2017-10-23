@@ -60,11 +60,12 @@ def get_cat():
 def move(action, distance, cat):
 
     reward = 0.001
-    min_distance = 12.
+    buffer_distance = 12.
                 
     # penalty for being too closes to an obstacle
-    if distance <= min_distance:   # buffer zone in cm
-        reward -= min_distance / distance
+    if distance <=buffer_distance:   # buffer zone in cm
+        reward -= buffer_distance 
+        
             
     # reward for locating cat
     if cat == merlin:
@@ -81,17 +82,19 @@ def move(action, distance, cat):
         moveRobot.reverse()
         reward += 0.0      # discourage reverse, no sensors on back of robot
     elif action == 2:       
-        moveRobot.turn_left()
-        reward += 1
-    elif action == 3:      
-        moveRobot.turn_right()
-        reward += 1
-    elif action == 4:       
         moveRobot.hard_left()
         reward += 1
-    elif action == 5:       
+    elif action == 3:      
         moveRobot.hard_right()
         reward += 1
+    '''
+    elif action == 4:       
+        moveRobot.turn_left()
+        reward += 1
+    elif action == 5:       
+        moveRobot.turn_right()
+        reward += 1
+    '''
 
 
     #print("state %d %d,  action %d,  reward %d" % (distance, cat, action, reward))
@@ -163,6 +166,9 @@ def choose_action(d, c, q_table):
         action_chose = state_actions.argmax()
     
     return action_chose
+
+
+
 
 
 def rl():
@@ -259,4 +265,19 @@ for i in range(n_distance_states):
         print('action values', s_table[i, j, :])
         
 '''
+
+
+# print actions by distance by cat
+z = np.zeros(n_distance_states)
+for i in range(n_distance_states):
+    for j in range(n_cat_states):
+        if j == 2:   # no cat
+            z[i] = np.argmax(q_table[i, j, :])
+            
+print('distance, action')
+for i in range(len(z)):
+    a = int(z[i])
+    print(i, actions[a])
+    
+    
 

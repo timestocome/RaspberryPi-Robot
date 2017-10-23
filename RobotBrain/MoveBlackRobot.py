@@ -31,7 +31,8 @@ class MoveRobot(object):
         gpio.setup(self.reverse_right, gpio.OUT) 
 
         self.wheel_pulse = 0.2
-        self.actions = ['forward', 'reverse', 'turn_left', 'turn_right', 'hard_left', 'hard_right']
+        #self.actions = ['forward', 'reverse', 'turn_left', 'turn_right', 'hard_left', 'hard_right']
+        self.actions = ['forward', 'reverse', 'hard_left', 'hard_right']
 
 
     def forward(self):
@@ -43,7 +44,7 @@ class MoveRobot(object):
         gpio.output(self.forward_right, gpio.LOW)
         gpio.output(self.forward_left, gpio.LOW)
     
-
+    '''
     def turn_left(self):
         
         gpio.output(self.forward_right, gpio.HIGH)
@@ -59,7 +60,7 @@ class MoveRobot(object):
         sleep(self.wheel_pulse)
         gpio.output(self.forward_left, gpio.LOW)
     
-
+    '''
 
     def reverse(self):
     
