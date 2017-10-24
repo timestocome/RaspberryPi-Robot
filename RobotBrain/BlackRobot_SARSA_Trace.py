@@ -22,7 +22,7 @@ from FindDistance import FindDistance
 from MoveBlackRobot import MoveRobot
 
 
-
+import datetime
 
 
 # init
@@ -38,13 +38,16 @@ max_distance = distance_finder.max_distance
 moveRobot = MoveRobot()
 actions = moveRobot.actions
 
-qTable = 'qTable.npy'
+qTable = 'qTable2.npy'
+epsilon = 1.0
 
 
 # robot environment
 def get_distance():
     # returns distance 1-50
     distance = distance_finder.get_distance()
+    
+    if distance < 1: distance = 1
     return int(distance)
 
 
@@ -59,11 +62,11 @@ def get_cat():
 def move(action, distance, cat):
 
     reward = 0.001
-    min_distance = 12.
+    buffer_distance = 12.
                 
     # penalty for being too closes to an obstacle
-    if distance <= min_distance:   # buffer zone in cm
-        reward -= min_distance / distance
+    if distance <= buffer_distance:   # buffer zone in cm
+        reward -= buffer_distance 
             
     # reward for locating cat
     if cat == merlin:
@@ -71,29 +74,31 @@ def move(action, distance, cat):
     if cat == min_cat:
         reward += 10
             
-            
-    # get reward for moving or robot will eventually park itself in middel of the room
+    # this robot is more cautious, increasing forward reward to offset that        
+    # get reward for moving or robot will eventually park itself in middle of the room
     if action == 0:         
         moveRobot.forward()
-        reward += 3       # reward robot for covering distance
+        reward += 5       # reward robot for covering distance
     elif action == 1:       
         moveRobot.reverse()
         reward += 0.0      # discourage reverse, no sensors on back of robot
     elif action == 2:       
-        moveRobot.turn_left()
-        reward += 1
-    elif action == 3:      
-        moveRobot.turn_right()
-        reward += 1
-    elif action == 4:       
         moveRobot.hard_left()
         reward += 1
-    elif action == 5:       
+    elif action == 3:      
         moveRobot.hard_right()
         reward += 1
+    '''
+    # robot's wheels were slipping too much for these manouvers 
+    elif action == 4:       
+        moveRobot.turn_left()
+        reward += 1
+    elif action == 5:       
+        moveRobot.turn_right()
+        reward += 1
+    '''
 
-
-    #print("state %d %d,  action %d,  reward %d" % (distance, cat, action, reward))
+    #print("state %d %d,  action %d,  reward %d epsilon %lf" % (distance, cat, action, reward, epsilon))
 
     return reward 
 
@@ -143,8 +148,9 @@ def save_q_table(t):
     
 
 
-def choose_action(d, c, q_table, epsilon):
+def choose_action(d, c, q_table):
 
+    global epsilon
     state_actions = q_table[d][c][:]
 
     # random move or no data recorded for this state yet
@@ -171,7 +177,6 @@ def rl():
         q_table = init_q_table(n_distance_states, n_cat_states, n_actions)
 
         
-    epsilon = 1.0       # random choice % decreases over time
     n_steps = 0
     
     
@@ -179,12 +184,13 @@ def rl():
     # trace_decay of 0 == temporal difference learning
     # trace_decay of 1 == better monte carlo learning
     trace_decay = 0.9   # backward looking
-    eligibility_trace = np.zeros(n_distance_states, n_cat_states, n_actions)
+    eligibility_trace = np.zeros((n_distance_states, n_cat_states, n_actions))
     
     # prime loop with first action
     d = get_distance()
     c = get_cat()
-    a = choose_action(d, c, q_table, epsilon)
+    a = choose_action(d, c, q_table)
+    start_time = datetime.datetime.now()
     
     
     while n_steps < n_loops:
@@ -196,10 +202,10 @@ def rl():
         
         
         # chose action based on next observation
-        a_ = choose_action(d_next, c_next, q_table, epsilon)
+        a_next = choose_action(d_next, c_next, q_table)
         
         # SARSA learning
-        s_target = reward + gamma + q_table[d_next][c_next][a_]
+        s_target = reward + gamma + q_table[d_next][c_next][a_next]
         
         
         # what robot thought would happen next
@@ -220,12 +226,15 @@ def rl():
         # update state for next loop
         d = d_next
         c = c_next
+        a = a_next
         
         n_steps += 1
         
         # save data every 100 steps incase of failure
         if n_steps % 100 == 0:
-            save_q_table(qTable)
+            save_q_table(q_table)
+            print(datetime.datetime.now() - start_time)
+            start_time = datetime.datetime.now()
         
         
     return q_table
@@ -267,4 +276,20 @@ for i in range(n_distance_states):
         print('action values', s_table[i, j, :])
         
 '''
+
+
+
+# print actions by distance by cat
+z = np.zeros(n_distance_states)
+for i in range(n_distance_states):
+    for j in range(n_cat_states):
+        if j == 2:   # no cat
+            z[i] = np.argmax(q_table[i, j, :])
+            
+print('distance, action')
+for i in range(len(z)):
+    a = int(z[i])
+    print(i, actions[a])
+    
+    
 
