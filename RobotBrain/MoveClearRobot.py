@@ -137,8 +137,8 @@ class MoveRobot(object):
 
         gpio.cleanup()
 
-        pwm.set_pwm(channel, 0, servo_center)
-        pwm = None
+        self.pwm.set_pwm(0, 0, servo_center)
+        self.pwm = None
 
 
 ##################################################################
