@@ -17,9 +17,11 @@ To do:
 
 WIP:
 - The SARSA algorithm creates a timid robot:
--- What the robot learned in 500 loops:
-Timid robot being trained to hunt cats and avoid obstacles using RL Sarsa 
+- Timid robot being trained to hunt cats and avoid obstacles using RL Sarsa prefers turns despite higher reward for forward motion. There are 4 turns / forward motion which also leads to favoring turns
+- Both robots loop: check for cat, check distance, chose action, move, collect reward, update qTable once per second
 
+
+- What the robot learned in 500 loops:
 - distance(cm) action if no cat
 - 1 right
 - 2 right
