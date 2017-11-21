@@ -1,7 +1,7 @@
 # RaspberryPi setup for machine learning robotics 
 
 
------     Setup     -----
+### -----     Setup     -----
 
 RaspberryPi Software Guide (basic OS directions and images) 
 
@@ -38,7 +38,7 @@ Use Etcher.io to flash the OS onto the card ( be sure to unzip Raspbian first )
 
 
 
------    Set keyboard to US     -----
+#### -----    Set keyboard to US     -----
 
 
 Set Keyboard to US
@@ -46,13 +46,13 @@ Set Keyboard to US
 - change 'gb' to 'us' and save
 
 
------     Install Emacs     -----
+#### -----     Install Emacs     -----
 
 > sudo apt-get install emacs
 
 
 
------     Setup the Pi Camera    -----
+#### -----     Setup the Pi Camera    -----
 
 Enable the camera
 > sudo raspi-config at a command prompt in the terminal
@@ -66,7 +66,7 @@ Python library and basics for accessing the camera
 https://www.raspberrypi.org/documentation/usage/camera/python/README.md
 
 
------     Install OpenCV     -----
+### -----     Install OpenCV     -----
 
 https://raspberrypi.stackexchange.com/questions/69169/how-to-install-opencv-on-raspberry-pi-3-in-raspbian-jessie
 
@@ -76,7 +76,7 @@ Access and test OpenCV with Python
 http://www.pyimagesearch.com/2015/03/30/accessing-the-raspberry-pi-camera-with-opencv-and-python/
 
 
------     Setup  Wifi, fixed IP and VNC   -----
+#### -----     Setup  Wifi, fixed IP and VNC   -----
 
 Setup the wifi on the RaspberryPi
 
@@ -139,14 +139,14 @@ hdmi_mode=16
 ----
 
 
------     Install Mini Anaconda     -----
+### -----     Install Mini Anaconda     -----
 
 https://www.continuum.io/blog/developer/anaconda-raspberry-pi
 
 https://stackoverflow.com/questions/39371772/how-to-install-anaconda-on-raspberry-pi-3-model-b
 
 
------     Install TensorFlow     -----
+### -----     Install TensorFlow     -----
 
 - First check to be sure you are using the Python V3.4 
 
@@ -162,7 +162,7 @@ https://github.com/tensorflow/models/tree/master/research/object_detection
 
 
 
------     Backup and Restore SD Card   -----
+#### -----     Backup and Restore SD Card   -----
 
 https://thepihut.com/blogs/raspberry-pi-tutorials/17789160-backing-up-and-restoring-your-raspberry-pis-sd-card
 
@@ -171,7 +171,7 @@ Convert *.dmg to *.img
 http://www.instructables.com/id/Restore-DMG-to-SD-Card-MAC-OS-X/
 
 
--------     Transfer Files between Desktop and RaspberryPi     -------
+#### -------     Transfer Files between Desktop and RaspberryPi     -------
 
 VNC lets you move files between your computer and the Pi
 
@@ -180,12 +180,12 @@ https://www.realvnc.com/en/connect/docs/file-transfer.html
 https://www.realvnc.com/en/connect/docs/file-transfer.html#file-transfer-troubleshoot
 
 
--------     Misc     -------
+#### -------     Misc     -------
 
 You'll want to leave the default /usr/bin/python pointed to 2.7 when installing software (apt-get)
 
 
------     Change default Python version     -----
+##### -----     Change default Python version     -----
 
 > cd /usr/bin
 
