@@ -32,3 +32,12 @@ https://photos.app.goo.gl/OZ2WZesJWuyISXQD3
 Robot with clear body has a servo to turn front wheels and rear wheel drive
 
 Robot with black body has 4 wheel drive and uses wheels to steer
+
+
+
+You can set up your robot to run on boot
+add the following to the end of your .bashrc file
+
+cd /home/pi/directoryOfCode
+python ClearRobot.py
+
