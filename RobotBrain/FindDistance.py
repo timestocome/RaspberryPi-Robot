@@ -14,8 +14,8 @@ class FindDistance(object):
         gpio.setmode(gpio.BOARD)
 
         # set up  and init 
-        self.trigger = 13
-        self.echo = 11
+        self.trigger = 11
+        self.echo = 13
 
         gpio.setup(self.trigger, gpio.OUT)
         gpio.setup(self.echo, gpio.IN)
@@ -33,7 +33,6 @@ class FindDistance(object):
         gpio.output(self.trigger, False)
         time.sleep(0.1)
     
-        print('checking.....')
         # send pulse to trigger
         gpio.output(self.trigger, True)
         time.sleep(0.00001)

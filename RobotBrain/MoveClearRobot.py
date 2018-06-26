@@ -50,8 +50,8 @@ class MoveRobot(object):
 
     
         # actions robot can take 
-        self.actions = ['center_forward', 'hard_right_forward', 'right_forward', 'left_forward', 'hard_left_forward',
-            'center_reverse', 'hard_right_reverse', 'right_reverse', 'left_reverse', 'hard_left_reverse']
+        self.actions = ['center_forward', 'right_forward', 'left_forward', 
+            'center_reverse','right_reverse', 'left_reverse']
 
 
         def forward(self):
@@ -77,6 +77,8 @@ class MoveRobot(object):
     
         self.reverse = reverse
     
+    
+            
     
 
     def center_forward(self):
@@ -129,7 +131,7 @@ class MoveRobot(object):
         self.reverse(self)
         
 
-
+        
     
     
     
@@ -137,7 +139,7 @@ class MoveRobot(object):
 
         gpio.cleanup()
 
-        self.pwm.set_pwm(0, 0, servo_center)
+        self.pwm.set_pwm(0, 0, self.servo_center)
         self.pwm = None
 
 

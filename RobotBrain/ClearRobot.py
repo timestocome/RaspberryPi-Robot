@@ -10,7 +10,7 @@
 import numpy as np
 import FindCats
 import FindDistance
-import MoveClearRobot as moveRobot
+import MoveClearRobot 
 
 
 
@@ -19,17 +19,23 @@ import MoveClearRobot as moveRobot
 
 
 # init
-cat_finder = FindCats()
+cat_finder = FindCats.FindCats()
 min_cat = cat_finder.min_cat
 merlin = cat_finder.merlin
 no_cat = cat_finder.no_cat
 
-distance_finder = FindDistance()
+distance_finder = FindDistance.FindDistance()
 max_distance = distance_finder.max_distance
 
 
-moveRobot = MoveRobot()
+moveRobot = MoveClearRobot.MoveRobot()
 actions = moveRobot.actions
+
+
+
+
+
+
 
 
 
@@ -50,14 +56,14 @@ def get_cat():
 
 
 
-def move(self, action):
+def move(action, distance, cat):
 
     reward = 0
     min_distance = 12.
 
     # penalty for being too closes to an obstacle
     if distance <= min_distance:   # buffer zone in cm
-    reward -= min_distance / distance
+        reward -= min_distance / distance
 
     
     # reward for locating cat
@@ -76,13 +82,13 @@ def move(self, action):
         moveRobot.hard_right_forward()
         reward += 1
     elif action == 2:       
-        move.Robot.right_forward()
+        moveRobot.right_forward()
         reward += 2
     elif action == 3:      
         moveRobot.left_forward()
         reward += 2
     elif action == 4:       
-        hard_left_forward()
+        moveRobot.hard_left_forward()
         reward += 1
     elif action == 5:       
         moveRobot.center_reverse()
@@ -102,7 +108,7 @@ def move(self, action):
        
 
 
-    print("state %d,  action %d,  reward %d" % (state, action, reward))
+    print("distance %d,  cat %d, action %d,  reward %d" % (distance, cat, action, reward))
 
     return reward
 
@@ -197,7 +203,7 @@ def rl():
 
         # chose action and move robot
         a = choose_action(d, c, q_table, epsilon)
-        reward = move(a, d, c)
+        reward = move(action=a, distance=d, cat=c)
         
         # update state
         d_next = get_distance()
@@ -261,3 +267,5 @@ for i in range(n_distance_states):
 
 save_q_table()
 load_q_table()
+
+
