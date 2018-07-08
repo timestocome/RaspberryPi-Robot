@@ -38,21 +38,15 @@ Use Etcher.io to flash the OS onto the card ( be sure to unzip Raspbian first )
 
 
 
-#### -----    Set keyboard to US     -----
 
-
-Set Keyboard to US
-> sudo vi /ect/default/keyboard
-- change 'gb' to 'us' and save
-
-
-#### -----     Install Emacs     -----
+### -----     Install Emacs     -----
+Emacs is much easier to use than vi for editing system files
 
 > sudo apt-get install emacs
 
 
 
-#### -----     Setup the Pi Camera    -----
+### -----     Setup the Pi Camera    -----
 
 Enable the camera
 > sudo raspi-config at a command prompt in the terminal
@@ -76,11 +70,7 @@ Access and test OpenCV with Python
 http://www.pyimagesearch.com/2015/03/30/accessing-the-raspberry-pi-camera-with-opencv-and-python/
 
 
-#### -----     Setup  Wifi, fixed IP and VNC   -----
-
-Setup the wifi on the RaspberryPi
-
-https://howtoraspberrypi.com/connect-wifi-raspberry-pi-3-others/
+### -----     Setup fixed IP and VNC   -----
 
 
 Set a fixed wireless ip on the RaspberryPi
@@ -172,7 +162,7 @@ https://github.com/tensorflow/models/tree/master/research/object_detection
 
 
 
-#### -----     Backup and Restore SD Card   -----
+### -----     Backup and Restore SD Card   -----
 
 https://thepihut.com/blogs/raspberry-pi-tutorials/17789160-backing-up-and-restoring-your-raspberry-pis-sd-card
 
@@ -181,7 +171,7 @@ Convert *.dmg to *.img
 http://www.instructables.com/id/Restore-DMG-to-SD-Card-MAC-OS-X/
 
 
-#### -------     Transfer Files between Desktop and RaspberryPi     -------
+### -------     Transfer Files between Desktop and RaspberryPi     -------
 
 VNC lets you move files between your computer and the Pi
 
@@ -190,12 +180,11 @@ https://www.realvnc.com/en/connect/docs/file-transfer.html
 https://www.realvnc.com/en/connect/docs/file-transfer.html#file-transfer-troubleshoot
 
 
-#### -------     Misc     -------
+### -------     Misc     -------
 
-You'll want to leave the default /usr/bin/python pointed to 2.7 when installing software (apt-get)
+none 
 
-
-##### -----     Change default Python version     -----
+### -----     Change default Python version     -----
 
 > cd /usr/bin
 
