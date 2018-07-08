@@ -152,14 +152,19 @@ https://stackoverflow.com/questions/39371772/how-to-install-anaconda-on-raspberr
 
 > python --version
 
-- Then follow the directions here:
+- Then follow the directions:
 
-https://github.com/samjabrahams/tensorflow-on-raspberry-pi
+sudo apt-get update &amp;&amp; sudo apt-get upgrade
+sudo apt-get install python3-pip python3-dev
+pip3 install tensorflow
 
-- if you are using Python 3.5 you'll have to change the name of the wheel file
-> cp tensorflow-1.1.0-cp34-cp34m-linux_armv7l.whl tensorflow-1.1.0-cp35-cp35m-linux_armv7l.whl
 
-( the cp35 and cp35m tell wheel which version of Python you are using )
+
+- If you run into trouble check here:
+
+https://www.raspberrypi.org/magpi/tensorflow-ai-raspberry-pi/
+
+
 
 - TensorFlow Object Detection model and installation instructions
 
