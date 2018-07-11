@@ -114,16 +114,13 @@ Set the VNC to run at boot every time you start your RaspberryPi
 
 Edit /boot/config.txt on RaspberryPi to get a full screen resolution on your desktop
 
-https://support.realvnc.com/knowledgebase/article/View/523/2/troubleshooting-vnc-server-on-the-raspberry-pi
-
+https://www.raspberrypi.org/forums/viewtopic.php?t=200196
 ----
 
 hdmi_force_hotplug=1
-
-hdmi_ignore_edid=0xa5000080
-
-hdmi_group=2
-
+hdmi_force_mode=1
+hdmi_drive=2
+hdmi_group=1
 hdmi_mode=16
 
 ----
